@@ -1,6 +1,9 @@
 # Claude
 *.claude
 
+# Private presentation notes (never share / commit)
+*.private.md
+
 # Execution logs
 logs/
 
