@@ -28,6 +28,7 @@ package-lock.json
 *.swo
 *~
 .DS_Store
+*.code-workspace
 
 # OS
 Thumbs.db
@@ -54,3 +55,6 @@ coverage/
 
 # Optional: Uncomment if you don't want to track scenarios
 # scenarios/
+
+# local Claude files
+CLAUDE.local.md

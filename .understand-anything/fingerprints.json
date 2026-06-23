@@ -1,0 +1,3394 @@
+{
+  "version": "1.0.0",
+  "gitCommitHash": "a67e97866d7ada33d3c2f1f0aadc66cd8323ece9",
+  "generatedAt": "2026-06-22T23:34:33.841Z",
+  "files": {
+    ".npmignore": {
+      "filePath": ".npmignore",
+      "contentHash": "5181d09f120dfdcfe2c39594760e7738a28d70f246a3b058eb3cfca96bd67190",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 34,
+      "hasStructuralAnalysis": false
+    },
+    ".understand-anything/.understandignore": {
+      "filePath": ".understand-anything/.understandignore",
+      "contentHash": "7861e293fc1f6d62f354eca6344586f9e3b146dba6e9c887b812dfd3b0da7d6d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 61,
+      "hasStructuralAnalysis": false
+    },
+    ".understand-anything/config.json": {
+      "filePath": ".understand-anything/config.json",
+      "contentHash": "08d37f20ea0af2233ae24f094723759f952381ecb6dd7f2aaa05ef96e95eae6b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 4,
+      "hasStructuralAnalysis": true
+    },
+    "bin/flowsphere.js": {
+      "filePath": "bin/flowsphere.js",
+      "contentHash": "4b16c5c236858a0751e835b9916a8f2594121f24118faa21f26114ff45a0455b",
+      "functions": [
+        {
+          "name": "showHelp",
+          "params": [],
+          "exported": false,
+          "lineCount": 32
+        },
+        {
+          "name": "showVersion",
+          "params": [],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "launchStudio",
+          "params": [],
+          "exported": false,
+          "lineCount": 1061
+        },
+        {
+          "name": "main",
+          "params": [],
+          "exported": false,
+          "lineCount": 106
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1233,
+      "hasStructuralAnalysis": true
+    },
+    "CLAUDE.md": {
+      "filePath": "CLAUDE.md",
+      "contentHash": "13166ab22c82345726fea702df2ba78939a315d0bb80f10e8a69e116ff4f52a2",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 909,
+      "hasStructuralAnalysis": true
+    },
+    "docs/features/enhanced-postman-import.md": {
+      "filePath": "docs/features/enhanced-postman-import.md",
+      "contentHash": "6478bd1999be29866bed04ca6c2e5983d9e44dcf6041da5f54f9957e1931c26e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 385,
+      "hasStructuralAnalysis": true
+    },
+    "docs/features/execution-log-visualizer.md": {
+      "filePath": "docs/features/execution-log-visualizer.md",
+      "contentHash": "efbd8a5f8dfb0797e9be2703f47dbf076873fc559104fe91861a7eeeb8abb856",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 147,
+      "hasStructuralAnalysis": true
+    },
+    "docs/features/export-to-postman.md": {
+      "filePath": "docs/features/export-to-postman.md",
+      "contentHash": "e498c6fca6972e6a912c737f99f9a0c4c8d3572c45a69347ce386809e9ca21a3",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 186,
+      "hasStructuralAnalysis": true
+    },
+    "docs/features/flow-runner-execution-controls.md": {
+      "filePath": "docs/features/flow-runner-execution-controls.md",
+      "contentHash": "f40fe823815dbbad6690a415d6662f437696839859baacf5f2e7d182c0c8b6f2",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 419,
+      "hasStructuralAnalysis": true
+    },
+    "docs/features/multi-environment-variable-groups.md": {
+      "filePath": "docs/features/multi-environment-variable-groups.md",
+      "contentHash": "8b4278c87953505c24987c228efb100641a3495dc4d9f3e6f53e03c0f46cbf85",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 842,
+      "hasStructuralAnalysis": true
+    },
+    "docs/features/node-templates-import-system.md": {
+      "filePath": "docs/features/node-templates-import-system.md",
+      "contentHash": "ebaed9b02e9fcd6fce5f4c0a08e56dc3e3f529495f6b303c7d45c1d67afc349d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 667,
+      "hasStructuralAnalysis": true
+    },
+    "docs/features/oauth-callback-capture.md": {
+      "filePath": "docs/features/oauth-callback-capture.md",
+      "contentHash": "5d5a486114444e020c2d763e8fbb34f3f93c921e65865e067a1d76471b612ef3",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 528,
+      "hasStructuralAnalysis": true
+    },
+    "docs/features/response-header-access.md": {
+      "filePath": "docs/features/response-header-access.md",
+      "contentHash": "98463c73b1b50cd77b38b99ec6385363a19790424aab5116cd65cf0cfb57e108",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1100,
+      "hasStructuralAnalysis": true
+    },
+    "docs/features/swagger-openapi-import.md": {
+      "filePath": "docs/features/swagger-openapi-import.md",
+      "contentHash": "3ef64dbdaf5ac970ade5ef7fae239beccfee129f756f8c695749452f6439c488",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1322,
+      "hasStructuralAnalysis": true
+    },
+    "docs/features/visual-workflow-storytelling-export.md": {
+      "filePath": "docs/features/visual-workflow-storytelling-export.md",
+      "contentHash": "364590c4cd3932ce8a3a38bad2d51d9868312e527badb414f97543f7f82ed955",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 827,
+      "hasStructuralAnalysis": true
+    },
+    "docs/implementation/enhanced-postman-import-status.md": {
+      "filePath": "docs/implementation/enhanced-postman-import-status.md",
+      "contentHash": "ed1ef5ee4b8a06e8edb424e7c7fd109910555783644abd18d9525b83ed015c28",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 192,
+      "hasStructuralAnalysis": true
+    },
+    "docs/implementation/phase1-stop-implementation-status.md": {
+      "filePath": "docs/implementation/phase1-stop-implementation-status.md",
+      "contentHash": "0ea4a0ce5dcf0c0507776c7d3bdc2a5bebfc11b47a65e8b1ffbf854a3f6c5dc6",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 119,
+      "hasStructuralAnalysis": true
+    },
+    "docs/implementation/phase2-step-by-step-implementation-status.md": {
+      "filePath": "docs/implementation/phase2-step-by-step-implementation-status.md",
+      "contentHash": "734ba6c30093f4cb54b11196ee5b8619dfc7169dde4be411c9646545c0f323ee",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 268,
+      "hasStructuralAnalysis": true
+    },
+    "docs/implementation/phase3-auto-step-implementation-status.md": {
+      "filePath": "docs/implementation/phase3-auto-step-implementation-status.md",
+      "contentHash": "c402d1e5630a224b7f3091b5375fd6d3be3be5573d12abed6cfc36da1520fcb9",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 255,
+      "hasStructuralAnalysis": true
+    },
+    "docs/INTERNAL-TASKS.md": {
+      "filePath": "docs/INTERNAL-TASKS.md",
+      "contentHash": "72ae3a1c84f0aa0e0748057d0c3c798738d9ffea869bde03e64de8b97a13ed73",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 221,
+      "hasStructuralAnalysis": true
+    },
+    "docs/presentation/flowsphere.html": {
+      "filePath": "docs/presentation/flowsphere.html",
+      "contentHash": "11f565a0c12f65bf0b56219793c22d06f0639fc2c5199585902703bc8c05d9be",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 208,
+      "hasStructuralAnalysis": false
+    },
+    "docs/presentation/flowsphere.md": {
+      "filePath": "docs/presentation/flowsphere.md",
+      "contentHash": "e15bec0f8fa1f68f4f8df2d29a41788fd38ca2ccdf22b965b80155540bd8fe47",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 168,
+      "hasStructuralAnalysis": true
+    },
+    "docs/prompts/API_FlowSphere_Node_Execution_Branding_Prompt.md": {
+      "filePath": "docs/prompts/API_FlowSphere_Node_Execution_Branding_Prompt.md",
+      "contentHash": "ee0f93a91a7aa493b21598def156439e4644718abd564b9e4c6e7597d79e8630",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 65,
+      "hasStructuralAnalysis": true
+    },
+    "docs/prompts/API_FlowSphere_Theme_Sonnet_4.5_v2.md": {
+      "filePath": "docs/prompts/API_FlowSphere_Theme_Sonnet_4.5_v2.md",
+      "contentHash": "d551f33504134ae0f94328573a93aad1622d8e2ea633897a287e9c00d6e31f0f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 158,
+      "hasStructuralAnalysis": true
+    },
+    "docs/prompts/API_FlowSphere_Theme_Sonnet_4.5.md": {
+      "filePath": "docs/prompts/API_FlowSphere_Theme_Sonnet_4.5.md",
+      "contentHash": "f54729350e854ec87626a846ad9532da8cc6de5092485653803c10acd0915eb5",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 144,
+      "hasStructuralAnalysis": true
+    },
+    "docs/prompts/claude_bash_http_sequence_prompt.md": {
+      "filePath": "docs/prompts/claude_bash_http_sequence_prompt.md",
+      "contentHash": "8121e96ddfaa18e2ee319eb7ba11b0fca95d7a80f1361f4b33d4334f6dca67d4",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 113,
+      "hasStructuralAnalysis": true
+    },
+    "docs/prompts/claude_postman_to_bash_config_prompt.md": {
+      "filePath": "docs/prompts/claude_postman_to_bash_config_prompt.md",
+      "contentHash": "058baa2bc5f74910d5679765bc641ba932d11587bdeb2ed56b3cc22e17dfee6d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 107,
+      "hasStructuralAnalysis": true
+    },
+    "docs/prompts/flow_control_panel_branding.md": {
+      "filePath": "docs/prompts/flow_control_panel_branding.md",
+      "contentHash": "5c7997e4d4cc1928d45bab7cba19f285b574a69d05947cd74de78550fd0eb5d3",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 94,
+      "hasStructuralAnalysis": true
+    },
+    "docs/prompts/flow_execution_modal_lifecycle.md": {
+      "filePath": "docs/prompts/flow_execution_modal_lifecycle.md",
+      "contentHash": "552bcfc88f844f529ece6aed9daf38aa45c691ba196656729d11e56847909458",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 129,
+      "hasStructuralAnalysis": true
+    },
+    "docs/prompts/flow_execution_modes_branding.md": {
+      "filePath": "docs/prompts/flow_execution_modes_branding.md",
+      "contentHash": "16e9b3267fe977936d9a52359c83755beabe88ded6608d797416a3d04d357f23",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 107,
+      "hasStructuralAnalysis": true
+    },
+    "docs/prompts/FlowSphere_Load_Config_Rebrand_Prompt.md": {
+      "filePath": "docs/prompts/FlowSphere_Load_Config_Rebrand_Prompt.md",
+      "contentHash": "17b7c8443fe1a8a88b2bab7f907b148228626cf077be9e3905ed8d5efee35a77",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 78,
+      "hasStructuralAnalysis": true
+    },
+    "docs/prompts/FlowSphere_Studio_Logo_Adjustment_Prompt.md": {
+      "filePath": "docs/prompts/FlowSphere_Studio_Logo_Adjustment_Prompt.md",
+      "contentHash": "da6aa6d97690b02a24d95ff8c7736af20282ec7519c3797b91b62a049196323f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 77,
+      "hasStructuralAnalysis": true
+    },
+    "docs/technical/change-impact-guide.md": {
+      "filePath": "docs/technical/change-impact-guide.md",
+      "contentHash": "16341a3074470fefe1d52866d0b64c6ee77155b00057dfd34b7b7cc8142b419a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 780,
+      "hasStructuralAnalysis": true
+    },
+    "docs/technical/config-validation-system.md": {
+      "filePath": "docs/technical/config-validation-system.md",
+      "contentHash": "f5f6b4ad5130f245f1de4740fe20df64e5aa63f8e64ae784c23927732b8933dc",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 333,
+      "hasStructuralAnalysis": true
+    },
+    "docs/technical/core-architecture.md": {
+      "filePath": "docs/technical/core-architecture.md",
+      "contentHash": "c8159f7dbc95f14a835d14ba922eb31e85aa3e706b1ca99e4ac12ee1d7774154",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 573,
+      "hasStructuralAnalysis": true
+    },
+    "docs/technical/flow-execution-architecture.md": {
+      "filePath": "docs/technical/flow-execution-architecture.md",
+      "contentHash": "d0d471f7159b355673769aa7a0e5bd0428a95b0d2a7826e002967209172f30f6",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 54,
+      "hasStructuralAnalysis": true
+    },
+    "docs/technical/modal-system.md": {
+      "filePath": "docs/technical/modal-system.md",
+      "contentHash": "22886fbd4f5f82223c946e4acbfb4c09d25944764a0eee8b86a9a37bc8dbdc96",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 279,
+      "hasStructuralAnalysis": true
+    },
+    "docs/technical/toggleable-features-guide.md": {
+      "filePath": "docs/technical/toggleable-features-guide.md",
+      "contentHash": "ef3fdee6764b947c270d5c21dadfb07275d859b89b166f700f56610e75e3cf28",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 585,
+      "hasStructuralAnalysis": true
+    },
+    "examples/config-comprehensive-demo.json": {
+      "filePath": "examples/config-comprehensive-demo.json",
+      "contentHash": "807c59175b6edfb59c13139ae911f47a9fc865ea2ace6d8659186d963d4bda2f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 277,
+      "hasStructuralAnalysis": true
+    },
+    "examples/config-ids-token.json": {
+      "filePath": "examples/config-ids-token.json",
+      "contentHash": "ae1d856a633c9ac8f8e185e6cbb0768ac13d3135a0eaa394a90a683f18551d7d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 30,
+      "hasStructuralAnalysis": true
+    },
+    "examples/config-oauth-example.json": {
+      "filePath": "examples/config-oauth-example.json",
+      "contentHash": "93b6bae85576370be11a5a5eb1fc72cd24f9412d00ee8dccaa20230c9bb151a8",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 64,
+      "hasStructuralAnalysis": true
+    },
+    "examples/config-simple.json": {
+      "filePath": "examples/config-simple.json",
+      "contentHash": "85adb9dee6d8527d86eb2f1cb391e6237175c7d7c0432d9c4d32f44e9865bf04",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 60,
+      "hasStructuralAnalysis": true
+    },
+    "examples/config-test-features.json": {
+      "filePath": "examples/config-test-features.json",
+      "contentHash": "834fbc8410e0cd065b315dd5c85e1c6df3080640129573f0e31230ede5b72e8d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 47,
+      "hasStructuralAnalysis": true
+    },
+    "examples/config-user-input.json": {
+      "filePath": "examples/config-user-input.json",
+      "contentHash": "0b93d1914062788383aa572c04dcde2ec7e9a62472c9049f59670cd60034a9fc",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 46,
+      "hasStructuralAnalysis": true
+    },
+    "examples/config.json": {
+      "filePath": "examples/config.json",
+      "contentHash": "2ec17c70cd2ceb51d7fbecd826d2c7538c65e09cc66748786e3acd5d15e72aba",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 162,
+      "hasStructuralAnalysis": true
+    },
+    "examples/README.md": {
+      "filePath": "examples/README.md",
+      "contentHash": "92fff40c69feab9c8580b8833a1644bd1af61f4c978d528d1af4de9f4f032a61",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 34,
+      "hasStructuralAnalysis": true
+    },
+    "legacy/flowsphere": {
+      "filePath": "legacy/flowsphere",
+      "contentHash": "188e725121801e295b9d73ea825c8dd5eb92a9a14f41ba28e6092359ffec6f46",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1847,
+      "hasStructuralAnalysis": false
+    },
+    "legacy/README.md": {
+      "filePath": "legacy/README.md",
+      "contentHash": "541e5e2f33add86979f093000977874e07cc1c3eab374797aa96b836d823e750",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 62,
+      "hasStructuralAnalysis": true
+    },
+    "lib/conditions.js": {
+      "filePath": "lib/conditions.js",
+      "contentHash": "7a85ef91e47f86d68f11aced68bcaac3a11136d212afa6f1996e54a9e0f07c2d",
+      "functions": [
+        {
+          "name": "evaluateCondition",
+          "params": [
+            "condition",
+            "context"
+          ],
+          "exported": false,
+          "lineCount": 236
+        },
+        {
+          "name": "evaluateConditions",
+          "params": [
+            "conditions",
+            "context"
+          ],
+          "exported": false,
+          "lineCount": 18
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 287,
+      "hasStructuralAnalysis": true
+    },
+    "lib/config-validator.js": {
+      "filePath": "lib/config-validator.js",
+      "contentHash": "9f38f19c9e2ae5ac77a1d4fa6ee074592baa725c211d7c7a05acbd1b4f4509ef",
+      "functions": [
+        {
+          "name": "validateConfig",
+          "params": [
+            "config"
+          ],
+          "exported": false,
+          "lineCount": 107
+        },
+        {
+          "name": "validateVariables",
+          "params": [
+            "variables",
+            "errors"
+          ],
+          "exported": false,
+          "lineCount": 22
+        },
+        {
+          "name": "validateDefaults",
+          "params": [
+            "defaults",
+            "errors"
+          ],
+          "exported": false,
+          "lineCount": 65
+        },
+        {
+          "name": "validateNode",
+          "params": [
+            "node",
+            "index",
+            "nodeIds",
+            "defaults",
+            "errors"
+          ],
+          "exported": false,
+          "lineCount": 202
+        },
+        {
+          "name": "validateUserPrompts",
+          "params": [
+            "userPrompts",
+            "nodePrefix",
+            "nodeIndex",
+            "nodeId",
+            "errors"
+          ],
+          "exported": false,
+          "lineCount": 24
+        },
+        {
+          "name": "validateConditions",
+          "params": [
+            "conditions",
+            "nodePrefix",
+            "nodeIndex",
+            "nodeId",
+            "nodeIds",
+            "errors"
+          ],
+          "exported": false,
+          "lineCount": 17
+        },
+        {
+          "name": "validateCondition",
+          "params": [
+            "condition",
+            "fieldPath",
+            "nodeIndex",
+            "nodeId",
+            "nodeIds",
+            "errors"
+          ],
+          "exported": false,
+          "lineCount": 55
+        },
+        {
+          "name": "validateNodeCondition",
+          "params": [
+            "condition",
+            "fieldPath",
+            "nodeIndex",
+            "nodeId",
+            "nodeIds",
+            "errors"
+          ],
+          "exported": false,
+          "lineCount": 77
+        },
+        {
+          "name": "validateVariableCondition",
+          "params": [
+            "condition",
+            "fieldPath",
+            "nodeIndex",
+            "nodeId",
+            "errors"
+          ],
+          "exported": false,
+          "lineCount": 24
+        },
+        {
+          "name": "validateInputCondition",
+          "params": [
+            "condition",
+            "fieldPath",
+            "nodeIndex",
+            "nodeId",
+            "errors"
+          ],
+          "exported": false,
+          "lineCount": 24
+        },
+        {
+          "name": "validateLegacyResponseCondition",
+          "params": [
+            "condition",
+            "fieldPath",
+            "nodeIndex",
+            "nodeId",
+            "errors"
+          ],
+          "exported": false,
+          "lineCount": 56
+        },
+        {
+          "name": "validateValidationRule",
+          "params": [
+            "validation",
+            "fieldPath",
+            "errors",
+            "nodeIndex",
+            "nodeId"
+          ],
+          "exported": false,
+          "lineCount": 64
+        },
+        {
+          "name": "checkForMalformedPlaceholders",
+          "params": [
+            "obj",
+            "nodePrefix",
+            "nodeIndex",
+            "nodeId",
+            "errors"
+          ],
+          "exported": false,
+          "lineCount": 31
+        },
+        {
+          "name": "validatePlaceholders",
+          "params": [
+            "node",
+            "nodePrefix",
+            "nodeIndex",
+            "nodeId",
+            "nodeIds",
+            "errors"
+          ],
+          "exported": false,
+          "lineCount": 110
+        },
+        {
+          "name": "isValidUrl",
+          "params": [
+            "url"
+          ],
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "formatErrors",
+          "params": [
+            "errors"
+          ],
+          "exported": false,
+          "lineCount": 26
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1012,
+      "hasStructuralAnalysis": true
+    },
+    "lib/executor.js": {
+      "filePath": "lib/executor.js",
+      "contentHash": "357e4d147839739c4498d6975883a744c22abd5a9efc6d9594f7176132f3487e",
+      "functions": [
+        {
+          "name": "mergeWithDefaults",
+          "params": [
+            "step",
+            "defaults"
+          ],
+          "exported": false,
+          "lineCount": 34
+        },
+        {
+          "name": "promptUserInput",
+          "params": [
+            "userPrompts"
+          ],
+          "exported": false,
+          "lineCount": 18
+        },
+        {
+          "name": "executeStep",
+          "params": [
+            "step",
+            "context"
+          ],
+          "exported": false,
+          "lineCount": 30
+        },
+        {
+          "name": "runSequence",
+          "params": [
+            "configPath"
+          ],
+          "exported": false,
+          "lineCount": 269
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 390,
+      "hasStructuralAnalysis": true
+    },
+    "lib/http-client.js": {
+      "filePath": "lib/http-client.js",
+      "contentHash": "94b108f75c5168074822fd2c3edd1fb755ecb29dfe46f00349737d16a8d33dcc",
+      "functions": [
+        {
+          "name": "executeRequest",
+          "params": [
+            "options"
+          ],
+          "exported": false,
+          "lineCount": 76
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 99,
+      "hasStructuralAnalysis": true
+    },
+    "lib/index.js": {
+      "filePath": "lib/index.js",
+      "contentHash": "b86a9f1f7d09d227cb55e8b13b97caad39cd71efc29f5edb88c48d0242bf95bd",
+      "functions": [
+        {
+          "name": "run",
+          "params": [
+            "configPath"
+          ],
+          "exported": false,
+          "lineCount": 11
+        },
+        {
+          "name": "runConfig",
+          "params": [
+            "config"
+          ],
+          "exported": false,
+          "lineCount": 4
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 49,
+      "hasStructuralAnalysis": true
+    },
+    "lib/logger.js": {
+      "filePath": "lib/logger.js",
+      "contentHash": "1fe653fb02a4582262c7385310392bfcf052ed9a75cb15a5ab5add1bfc8f1d19",
+      "functions": [
+        {
+          "name": "promptSaveLog",
+          "params": [
+            "executionLog",
+            "configPath"
+          ],
+          "exported": false,
+          "lineCount": 28
+        },
+        {
+          "name": "saveLog",
+          "params": [
+            "executionLog",
+            "configPath"
+          ],
+          "exported": false,
+          "lineCount": 13
+        },
+        {
+          "name": "_saveLogWithMetadata",
+          "params": [
+            "logPath",
+            "executionLog",
+            "configPath",
+            "executionResult"
+          ],
+          "exported": false,
+          "lineCount": 51
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 135,
+      "hasStructuralAnalysis": true
+    },
+    "lib/substitution.js": {
+      "filePath": "lib/substitution.js",
+      "contentHash": "ce593c767a26a832a8124e8398079b313fcb22f6ebb8bd7435de56b90b350672",
+      "functions": [
+        {
+          "name": "replaceDynamicPlaceholders",
+          "params": [
+            "input"
+          ],
+          "exported": false,
+          "lineCount": 29
+        },
+        {
+          "name": "substituteVariables",
+          "params": [
+            "input",
+            "context"
+          ],
+          "exported": false,
+          "lineCount": 105
+        },
+        {
+          "name": "substituteInObject",
+          "params": [
+            "obj",
+            "context"
+          ],
+          "exported": false,
+          "lineCount": 22
+        },
+        {
+          "name": "substituteWithTracking",
+          "params": [
+            "obj",
+            "context"
+          ],
+          "exported": false,
+          "lineCount": 5
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 223,
+      "hasStructuralAnalysis": true
+    },
+    "lib/utils.js": {
+      "filePath": "lib/utils.js",
+      "contentHash": "6935129ec0a9994bef2d81f8256c88518d990d99e1bf809994516f628c363445",
+      "functions": [
+        {
+          "name": "generateUUID",
+          "params": [],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "getTimestamp",
+          "params": [],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "readJSONFile",
+          "params": [
+            "filePath"
+          ],
+          "exported": false,
+          "lineCount": 13
+        },
+        {
+          "name": "writeJSONFile",
+          "params": [
+            "filePath",
+            "data"
+          ],
+          "exported": false,
+          "lineCount": 10
+        },
+        {
+          "name": "colorize",
+          "params": [
+            "text",
+            "color"
+          ],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "extractValue",
+          "params": [
+            "obj",
+            "path"
+          ],
+          "exported": false,
+          "lineCount": 79
+        },
+        {
+          "name": "deepMerge",
+          "params": [
+            "target",
+            "source"
+          ],
+          "exported": false,
+          "lineCount": 13
+        },
+        {
+          "name": "formatDuration",
+          "params": [
+            "seconds"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "getLogTimestamp",
+          "params": [],
+          "exported": false,
+          "lineCount": 11
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 229,
+      "hasStructuralAnalysis": true
+    },
+    "lib/validator.js": {
+      "filePath": "lib/validator.js",
+      "contentHash": "f9d68b96782116b26dfb8431e191dcb6b679d26e46bd2849dcd4070eba5f37f2",
+      "functions": [
+        {
+          "name": "validateResponse",
+          "params": [
+            "response"
+          ],
+          "exported": false,
+          "lineCount": 195
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 218,
+      "hasStructuralAnalysis": true
+    },
+    "package.json": {
+      "filePath": "package.json",
+      "contentHash": "4a8d144d3e30c2be419ea44a0a4ddec0e7ae47e05b9cc7eb5936d9283b54fb01",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 52,
+      "hasStructuralAnalysis": true
+    },
+    "postman-tools/fakeAPI-config.json": {
+      "filePath": "postman-tools/fakeAPI-config.json",
+      "contentHash": "a98b5c637062f88fcdf53a98aad25428bf18a53f79a5c3d499645c99b3d780c9",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 269,
+      "hasStructuralAnalysis": true
+    },
+    "postman-tools/parse-postman.js": {
+      "filePath": "postman-tools/parse-postman.js",
+      "contentHash": "b54b37802b289dbe8c2a627db2e41e0bb0e0ee467d76a6018f102c65f6abc983",
+      "functions": [
+        {
+          "name": "hasNumericPrefixes",
+          "params": [
+            "items"
+          ],
+          "exported": false,
+          "lineCount": 9
+        },
+        {
+          "name": "getNumericPrefix",
+          "params": [
+            "name"
+          ],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "removeNumericPrefix",
+          "params": [
+            "name"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "generateNodeId",
+          "params": [
+            "name"
+          ],
+          "exported": false,
+          "lineCount": 24
+        },
+        {
+          "name": "replaceEnvVars",
+          "params": [
+            "str"
+          ],
+          "exported": false,
+          "lineCount": 16
+        },
+        {
+          "name": "buildUrlFromObject",
+          "params": [
+            "urlObj"
+          ],
+          "exported": false,
+          "lineCount": 27
+        },
+        {
+          "name": "convertAuthToHeaders",
+          "params": [
+            "authConfig"
+          ],
+          "exported": false,
+          "lineCount": 44
+        },
+        {
+          "name": "extractValidationsFromTests",
+          "params": [
+            "events"
+          ],
+          "exported": false,
+          "lineCount": 82
+        },
+        {
+          "name": "collectRequests",
+          "params": [
+            "items"
+          ],
+          "exported": false,
+          "lineCount": 41
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 731,
+      "hasStructuralAnalysis": true
+    },
+    "postman-tools/README.md": {
+      "filePath": "postman-tools/README.md",
+      "contentHash": "e85ecbc64b8a771bb10fe5c487842020853a1b5f04ea51c684edd7013032484c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 84,
+      "hasStructuralAnalysis": true
+    },
+    "postman-tools/sample files/Endpoint 3.postman_collection.json": {
+      "filePath": "postman-tools/sample files/Endpoint 3.postman_collection.json",
+      "contentHash": "6be68cb03376a6ba3614d20af378aa06e68ba7fab521e3aa0f4b83a93d033f46",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 815,
+      "hasStructuralAnalysis": true
+    },
+    "postman-tools/sample files/Fake API.postman_collection.json": {
+      "filePath": "postman-tools/sample files/Fake API.postman_collection.json",
+      "contentHash": "e1db30cf9bfb3e3be76aec3ab4deeb7b19368f8d54a3d70598bd40b029385981",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1035,
+      "hasStructuralAnalysis": true
+    },
+    "postman-tools/sample files/FakeAPI Heroku.postman_environment_with_values.json": {
+      "filePath": "postman-tools/sample files/FakeAPI Heroku.postman_environment_with_values.json",
+      "contentHash": "af2f6bc0fe877bd029c42f6441a91d94d2979d364189f3a4bba2ca127edf44ab",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 24,
+      "hasStructuralAnalysis": true
+    },
+    "postman-tools/sample files/FakeAPI Heroku.postman_environment.json": {
+      "filePath": "postman-tools/sample files/FakeAPI Heroku.postman_environment.json",
+      "contentHash": "e753abf7795e3d8b740779afcce83cc45a885fa443720ced1e5e703341d916c6",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 24,
+      "hasStructuralAnalysis": true
+    },
+    "README.md": {
+      "filePath": "README.md",
+      "contentHash": "bc8c202b06644710d4551162f05f234f5466025861e8af40d385c51747fb53b7",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 500,
+      "hasStructuralAnalysis": true
+    },
+    "ROADMAP.md": {
+      "filePath": "ROADMAP.md",
+      "contentHash": "087373c111c537b3fd1c56342362255be65f299fce3dd8010ac30600ce376edd",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 457,
+      "hasStructuralAnalysis": true
+    },
+    "studio/assets/favicon/site.webmanifest": {
+      "filePath": "studio/assets/favicon/site.webmanifest",
+      "contentHash": "7a9e07ce1f7386689917602ddc5a75750ad842e605ff764f67173529c181bf04",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": false
+    },
+    "studio/css/styles.css": {
+      "filePath": "studio/css/styles.css",
+      "contentHash": "a845246c029cd56a6695228e83576e672e519b5d236003c66f76883ffaa56a6d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2051,
+      "hasStructuralAnalysis": false
+    },
+    "studio/index.html": {
+      "filePath": "studio/index.html",
+      "contentHash": "38fbd3ee75714762a6e2ac1a458bea23727010d70523b7d20d42324340135eec",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 794,
+      "hasStructuralAnalysis": false
+    },
+    "studio/js/autocomplete.js": {
+      "filePath": "studio/js/autocomplete.js",
+      "contentHash": "640ea209983e68592c90b33e30d928ff3cefd6d3a64abfc96e335453cb25fb40",
+      "functions": [
+        {
+          "name": "initAutocomplete",
+          "params": [],
+          "exported": false,
+          "lineCount": 31
+        },
+        {
+          "name": "attachAutocompleteToInput",
+          "params": [
+            "input"
+          ],
+          "exported": false,
+          "lineCount": 46
+        },
+        {
+          "name": "handleAutocompleteInput",
+          "params": [
+            "input",
+            "stepIndex"
+          ],
+          "exported": false,
+          "lineCount": 36
+        },
+        {
+          "name": "buildSchemaFieldSuggestions",
+          "params": [
+            "schema",
+            "nodeId",
+            "fieldPath",
+            "partialText"
+          ],
+          "exported": false,
+          "lineCount": 99
+        },
+        {
+          "name": "getTypeDisplayInfo",
+          "params": [
+            "fieldSchema"
+          ],
+          "exported": false,
+          "lineCount": 20
+        },
+        {
+          "name": "buildAutocompleteSuggestions",
+          "params": [
+            "partialText",
+            "stepIndex"
+          ],
+          "exported": false,
+          "lineCount": 204
+        },
+        {
+          "name": "handleJqAutocompleteInput",
+          "params": [
+            "input"
+          ],
+          "exported": false,
+          "lineCount": 18
+        },
+        {
+          "name": "buildJqSuggestions",
+          "params": [
+            "value",
+            "cursorPos"
+          ],
+          "exported": false,
+          "lineCount": 75
+        },
+        {
+          "name": "buildSchemaFieldSuggestionsForJq",
+          "params": [
+            "schema",
+            "fieldPath",
+            "partialText"
+          ],
+          "exported": false,
+          "lineCount": 121
+        },
+        {
+          "name": "showJqAutocomplete",
+          "params": [
+            "input",
+            "suggestions"
+          ],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "getCaretCoordinates",
+          "params": [
+            "input"
+          ],
+          "exported": false,
+          "lineCount": 102
+        },
+        {
+          "name": "showAutocomplete",
+          "params": [
+            "input",
+            "suggestions",
+            "bracePosition"
+          ],
+          "exported": false,
+          "lineCount": 98
+        },
+        {
+          "name": "updateAutocompleteSelection",
+          "params": [],
+          "exported": false,
+          "lineCount": 11
+        },
+        {
+          "name": "selectAutocompleteSuggestion",
+          "params": [
+            "suggestion"
+          ],
+          "exported": false,
+          "lineCount": 88
+        },
+        {
+          "name": "hideAutocomplete",
+          "params": [],
+          "exported": false,
+          "lineCount": 10
+        },
+        {
+          "name": "escapeHtml",
+          "params": [
+            "text"
+          ],
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "attachAutocompleteToAllInputs",
+          "params": [],
+          "exported": false,
+          "lineCount": 36
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1053,
+      "hasStructuralAnalysis": true
+    },
+    "studio/js/bootstrap-modal-bridge.js": {
+      "filePath": "studio/js/bootstrap-modal-bridge.js",
+      "contentHash": "dfeb994bfba08cdf2e701b9a52a0cec5043edc88fb2b73bcd47d8541cb21da3e",
+      "functions": [
+        {
+          "name": "createNew",
+          "params": [],
+          "exported": false,
+          "lineCount": 14
+        },
+        {
+          "name": "closeNewConfigModal",
+          "params": [],
+          "exported": false,
+          "lineCount": 16
+        },
+        {
+          "name": "selectTemplate",
+          "params": [
+            "templateType",
+            "element"
+          ],
+          "exported": false,
+          "lineCount": 36
+        },
+        {
+          "name": "updateLoadConfigButtonState",
+          "params": [
+            "templateType"
+          ],
+          "exported": false,
+          "lineCount": 29
+        },
+        {
+          "name": "confirmNewConfig",
+          "params": [],
+          "exported": false,
+          "lineCount": 249
+        },
+        {
+          "name": "resetLoadConfigModal",
+          "params": [],
+          "exported": false,
+          "lineCount": 94
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 458,
+      "hasStructuralAnalysis": true
+    },
+    "studio/js/config-manager.js": {
+      "filePath": "studio/js/config-manager.js",
+      "contentHash": "63268ab7d18fa36e61163318b115003a3c921c8e2d87f7ac9da69fd58d5dfbfa",
+      "functions": [
+        {
+          "name": "saveToLocalStorage",
+          "params": [],
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "updateAutoSaveIndicator",
+          "params": [],
+          "exported": false,
+          "lineCount": 14
+        },
+        {
+          "name": "updateFileNameDisplay",
+          "params": [],
+          "exported": false,
+          "lineCount": 24
+        },
+        {
+          "name": "updateStartButton",
+          "params": [],
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "updateImportNodesButton",
+          "params": [],
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "updateValidateButton",
+          "params": [],
+          "exported": false,
+          "lineCount": 9
+        },
+        {
+          "name": "renameFile",
+          "params": [],
+          "exported": false,
+          "lineCount": 49
+        },
+        {
+          "name": "loadFile",
+          "params": [],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "downloadFile",
+          "params": [],
+          "exported": false,
+          "lineCount": 15
+        },
+        {
+          "name": "closeFile",
+          "params": [],
+          "exported": false,
+          "lineCount": 38
+        },
+        {
+          "name": "loadFromLocalStorage",
+          "params": [],
+          "exported": false,
+          "lineCount": 30
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 223,
+      "hasStructuralAnalysis": true
+    },
+    "studio/js/config-validator-ui.js": {
+      "filePath": "studio/js/config-validator-ui.js",
+      "contentHash": "7b1116339013e1d321b99c58a3a6292e3f694b485ca87410479cd3e44cfd0e6c",
+      "functions": [
+        {
+          "name": "validateConfig",
+          "params": [],
+          "exported": false,
+          "lineCount": 49
+        },
+        {
+          "name": "showValidationIndicator",
+          "params": [
+            "result"
+          ],
+          "exported": false,
+          "lineCount": 37
+        },
+        {
+          "name": "showConfigValidationResults",
+          "params": [
+            "result"
+          ],
+          "exported": false,
+          "lineCount": 92
+        },
+        {
+          "name": "escapeHtml",
+          "params": [
+            "text"
+          ],
+          "exported": false,
+          "lineCount": 6
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 206,
+      "hasStructuralAnalysis": true
+    },
+    "studio/js/core/feature-registry.js": {
+      "filePath": "studio/js/core/feature-registry.js",
+      "contentHash": "a6f4dd3d07c36d27576f610a63905a392ec5a6a4b1969a78bd18a9446dda1b96",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 325,
+      "hasStructuralAnalysis": true
+    },
+    "studio/js/core/safe-wrappers.js": {
+      "filePath": "studio/js/core/safe-wrappers.js",
+      "contentHash": "0c5259f2c907ad6a023507de289ebd01311f4a3c9cf76eab1d911ba7090702a3",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 75,
+      "hasStructuralAnalysis": true
+    },
+    "studio/js/core/settings-ui.js": {
+      "filePath": "studio/js/core/settings-ui.js",
+      "contentHash": "a411d4f85c3c45b13d7aa5648548fcbadfffde025c297ef040b5da18324735b7",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 229,
+      "hasStructuralAnalysis": true
+    },
+    "studio/js/core/ui-adapter.js": {
+      "filePath": "studio/js/core/ui-adapter.js",
+      "contentHash": "fc74b90b3568aa46a6cb7a2f3100ea3e922625af9f195fa0cb4589330a312b34",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 121,
+      "hasStructuralAnalysis": true
+    },
+    "studio/js/drag-drop-handler.js": {
+      "filePath": "studio/js/drag-drop-handler.js",
+      "contentHash": "66cee44ceac8ee09a7e5a24c001cdcc4471845acbf4293b80dc5f9328e98633b",
+      "functions": [
+        {
+          "name": "initStepDragAndDrop",
+          "params": [],
+          "exported": false,
+          "lineCount": 35
+        },
+        {
+          "name": "handleDragStart",
+          "params": [
+            "event"
+          ],
+          "exported": false,
+          "lineCount": 17
+        },
+        {
+          "name": "handleAccordionDragOver",
+          "params": [
+            "event"
+          ],
+          "exported": false,
+          "lineCount": 10
+        },
+        {
+          "name": "handleDragOver",
+          "params": [
+            "event"
+          ],
+          "exported": false,
+          "lineCount": 37
+        },
+        {
+          "name": "handleDragEnter",
+          "params": [
+            "event"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "handleDragLeave",
+          "params": [
+            "event"
+          ],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "handleDrop",
+          "params": [
+            "event"
+          ],
+          "exported": false,
+          "lineCount": 78
+        },
+        {
+          "name": "handleDragEnd",
+          "params": [
+            "event"
+          ],
+          "exported": false,
+          "lineCount": 23
+        },
+        {
+          "name": "reorderSteps",
+          "params": [
+            "fromIndex",
+            "toIndex"
+          ],
+          "exported": false,
+          "lineCount": 28
+        },
+        {
+          "name": "updateOpenStepIndices",
+          "params": [
+            "fromIndex",
+            "toIndex"
+          ],
+          "exported": false,
+          "lineCount": 33
+        },
+        {
+          "name": "createDropIndicator",
+          "params": [],
+          "exported": false,
+          "lineCount": 16
+        },
+        {
+          "name": "positionDropIndicator",
+          "params": [
+            "targetItem",
+            "isTopHalf"
+          ],
+          "exported": false,
+          "lineCount": 33
+        },
+        {
+          "name": "hideDropIndicator",
+          "params": [],
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "removeDropIndicator",
+          "params": [],
+          "exported": false,
+          "lineCount": 11
+        },
+        {
+          "name": "createPositionIndicator",
+          "params": [],
+          "exported": false,
+          "lineCount": 16
+        },
+        {
+          "name": "updatePositionIndicator",
+          "params": [
+            "topPosition",
+            "targetPosition"
+          ],
+          "exported": false,
+          "lineCount": 12
+        },
+        {
+          "name": "applyFadeInAnimation",
+          "params": [],
+          "exported": false,
+          "lineCount": 22
+        },
+        {
+          "name": "handleAutoScroll",
+          "params": [
+            "event"
+          ],
+          "exported": false,
+          "lineCount": 39
+        },
+        {
+          "name": "stopAutoScroll",
+          "params": [],
+          "exported": false,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 541,
+      "hasStructuralAnalysis": true
+    },
+    "studio/js/flow-runner.js": {
+      "filePath": "studio/js/flow-runner.js",
+      "contentHash": "9542a252ebcfc86ced5dff049222c1d85829474679a684b70d1d574d36ae75f4",
+      "functions": [
+        {
+          "name": "updateRunSequenceButton",
+          "params": [],
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "updateProgressIndicator",
+          "params": [
+            "state",
+            "stepNumber",
+            "totalSteps"
+          ],
+          "exported": false,
+          "lineCount": 54
+        },
+        {
+          "name": "setModalTitle",
+          "params": [
+            "title"
+          ],
+          "exported": false,
+          "lineCount": 17
+        },
+        {
+          "name": "updateRunButton",
+          "params": [
+            "newState"
+          ],
+          "exported": false,
+          "lineCount": 18
+        },
+        {
+          "name": "clearResults",
+          "params": [],
+          "exported": false,
+          "lineCount": 35
+        },
+        {
+          "name": "stopExecution",
+          "params": [],
+          "exported": false,
+          "lineCount": 65
+        },
+        {
+          "name": "showStopButton",
+          "params": [],
+          "exported": false,
+          "lineCount": 10
+        },
+        {
+          "name": "hideStopButton",
+          "params": [],
+          "exported": false,
+          "lineCount": 10
+        },
+        {
+          "name": "hideCloseMonitorButton",
+          "params": [],
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "showCloseMonitorButton",
+          "params": [],
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "showExecutionModeSelector",
+          "params": [],
+          "exported": false,
+          "lineCount": 140
+        },
+        {
+          "name": "startFlowWithSelectedMode",
+          "params": [],
+          "exported": false,
+          "lineCount": 33
+        },
+        {
+          "name": "runSequenceFullSpeed",
+          "params": [],
+          "exported": false,
+          "lineCount": 475
+        },
+        {
+          "name": "getCurrentConfig",
+          "params": [],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "showRunningState",
+          "params": [
+            "isRunning"
+          ],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "showLoadingModal",
+          "params": [
+            "totalSteps"
+          ],
+          "exported": false,
+          "lineCount": 25
+        },
+        {
+          "name": "updateModalWithFlowStarted",
+          "params": [
+            "totalSteps"
+          ],
+          "exported": false,
+          "lineCount": 9
+        },
+        {
+          "name": "updateModalWithStep",
+          "params": [
+            "stepData",
+            "currentStep",
+            "totalSteps"
+          ],
+          "exported": false,
+          "lineCount": 139
+        },
+        {
+          "name": "showStepPlaceholder",
+          "params": [
+            "stepData",
+            "currentStep",
+            "totalSteps"
+          ],
+          "exported": false,
+          "lineCount": 26
+        },
+        {
+          "name": "replaceStepPlaceholder",
+          "params": [
+            "stepData",
+            "stepNumber",
+            "totalSteps"
+          ],
+          "exported": false,
+          "lineCount": 137
+        },
+        {
+          "name": "showInputPendingPlaceholder",
+          "params": [
+            "stepData",
+            "stepNumber",
+            "totalSteps"
+          ],
+          "exported": false,
+          "lineCount": 87
+        },
+        {
+          "name": "showInputPendingPlaceholderNonBlocking",
+          "params": [
+            "stepData",
+            "stepNumber",
+            "totalSteps"
+          ],
+          "exported": false,
+          "lineCount": 47
+        },
+        {
+          "name": "removeInputPendingPlaceholder",
+          "params": [
+            "stepNumber"
+          ],
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "updateModalWithSummary",
+          "params": [
+            "result"
+          ],
+          "exported": false,
+          "lineCount": 13
+        },
+        {
+          "name": "showExecutionError",
+          "params": [
+            "error"
+          ],
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "displayExecutionResults",
+          "params": [
+            "result"
+          ],
+          "exported": false,
+          "lineCount": 115
+        },
+        {
+          "name": "createResultsModal",
+          "params": [],
+          "exported": false,
+          "lineCount": 49
+        },
+        {
+          "name": "showAlert",
+          "params": [
+            "type",
+            "message"
+          ],
+          "exported": false,
+          "lineCount": 28
+        },
+        {
+          "name": "escapeHtml",
+          "params": [
+            "text"
+          ],
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "getSubstitutionStyle",
+          "params": [
+            "type"
+          ],
+          "exported": false,
+          "lineCount": 20
+        },
+        {
+          "name": "highlightSubstitutionsInText",
+          "params": [
+            "text"
+          ],
+          "exported": false,
+          "lineCount": 69
+        },
+        {
+          "name": "highlightSubstitutionsInJSON",
+          "params": [
+            "jsonObj"
+          ],
+          "exported": false,
+          "lineCount": 53
+        },
+        {
+          "name": "showInputRequiredPlaceholder",
+          "params": [
+            "stepResult",
+            "stepNumber",
+            "totalSteps"
+          ],
+          "exported": false,
+          "lineCount": 48
+        },
+        {
+          "name": "waitForPlaceholderClick",
+          "params": [],
+          "exported": false,
+          "lineCount": 24
+        },
+        {
+          "name": "collectUserInputForStep",
+          "params": [
+            "stepData"
+          ],
+          "exported": false,
+          "lineCount": 120
+        },
+        {
+          "name": "handleBrowserLaunch",
+          "params": [
+            "stepData"
+          ],
+          "exported": false,
+          "lineCount": 166
+        },
+        {
+          "name": "extractValueFromPath",
+          "params": [
+            "obj",
+            "path"
+          ],
+          "exported": false,
+          "lineCount": 30
+        },
+        {
+          "name": "showPostExecutionButtons",
+          "params": [],
+          "exported": false,
+          "lineCount": 23
+        },
+        {
+          "name": "hidePostExecutionButtons",
+          "params": [],
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "saveLogs",
+          "params": [],
+          "exported": false,
+          "lineCount": 49
+        },
+        {
+          "name": "rerunSequence",
+          "params": [],
+          "exported": false,
+          "lineCount": 22
+        },
+        {
+          "name": "runSequence",
+          "params": [],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "runSequenceStepByStep",
+          "params": [],
+          "exported": false,
+          "lineCount": 318
+        },
+        {
+          "name": "waitForContinue",
+          "params": [],
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "continueToNextStep",
+          "params": [],
+          "exported": false,
+          "lineCount": 9
+        },
+        {
+          "name": "showContinueButton",
+          "params": [
+            "currentStep",
+            "nextNode"
+          ],
+          "exported": false,
+          "lineCount": 40
+        },
+        {
+          "name": "hideContinueButton",
+          "params": [],
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "runSequenceAutoStep",
+          "params": [],
+          "exported": false,
+          "lineCount": 319
+        },
+        {
+          "name": "countdownAndWait",
+          "params": [
+            "seconds"
+          ],
+          "exported": false,
+          "lineCount": 46
+        },
+        {
+          "name": "showCountdownButton",
+          "params": [
+            "currentStep",
+            "nextNode",
+            "delay"
+          ],
+          "exported": false,
+          "lineCount": 48
+        },
+        {
+          "name": "hideCountdownButton",
+          "params": [],
+          "exported": false,
+          "lineCount": 10
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 3314,
+      "hasStructuralAnalysis": true
+    },
+    "studio/js/form-handlers.js": {
+      "filePath": "studio/js/form-handlers.js",
+      "contentHash": "cb3d2d0592d548e496d1d5aa26a8b17493d6ec765790b8864f448710c3f5d271",
+      "functions": [
+        {
+          "name": "renderDefaultValidations",
+          "params": [],
+          "exported": false,
+          "lineCount": 37
+        },
+        {
+          "name": "addDefaultValidation",
+          "params": [],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "editDefaultValidation",
+          "params": [
+            "index"
+          ],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "removeDefaultValidation",
+          "params": [
+            "index"
+          ],
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "showDefaultValidationModal",
+          "params": [
+            "valIndex",
+            "validation"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "addDefaultHeader",
+          "params": [],
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "updateDefaultHeader",
+          "params": [
+            "index",
+            "field",
+            "value"
+          ],
+          "exported": false,
+          "lineCount": 17
+        },
+        {
+          "name": "removeDefaultHeader",
+          "params": [
+            "index"
+          ],
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "addStep",
+          "params": [],
+          "exported": false,
+          "lineCount": 64
+        },
+        {
+          "name": "showAddNewNodeModal",
+          "params": [],
+          "exported": false,
+          "lineCount": 49
+        },
+        {
+          "name": "updateNodePreview",
+          "params": [],
+          "exported": false,
+          "lineCount": 18
+        },
+        {
+          "name": "generateNodeDetails",
+          "params": [
+            "method",
+            "url"
+          ],
+          "exported": false,
+          "lineCount": 31
+        },
+        {
+          "name": "confirmCreateNode",
+          "params": [],
+          "exported": false,
+          "lineCount": 36
+        },
+        {
+          "name": "skipNodeCreation",
+          "params": [],
+          "exported": false,
+          "lineCount": 24
+        },
+        {
+          "name": "showAddNodePositionModal",
+          "params": [],
+          "exported": false,
+          "lineCount": 35
+        },
+        {
+          "name": "confirmAddNodePosition",
+          "params": [],
+          "exported": false,
+          "lineCount": 20
+        },
+        {
+          "name": "scrollToStep",
+          "params": [
+            "stepIndex"
+          ],
+          "exported": false,
+          "lineCount": 34
+        },
+        {
+          "name": "cloneStep",
+          "params": [
+            "index"
+          ],
+          "exported": false,
+          "lineCount": 45
+        },
+        {
+          "name": "removeStep",
+          "params": [
+            "index"
+          ],
+          "exported": false,
+          "lineCount": 21
+        },
+        {
+          "name": "moveStep",
+          "params": [
+            "index",
+            "direction"
+          ],
+          "exported": false,
+          "lineCount": 21
+        },
+        {
+          "name": "performStepSwap",
+          "params": [
+            "index",
+            "newIndex"
+          ],
+          "exported": false,
+          "lineCount": 39
+        },
+        {
+          "name": "updateStep",
+          "params": [
+            "index",
+            "field",
+            "value"
+          ],
+          "exported": false,
+          "lineCount": 15
+        },
+        {
+          "name": "updateStepJSON",
+          "params": [
+            "index",
+            "field",
+            "value"
+          ],
+          "exported": false,
+          "lineCount": 37
+        },
+        {
+          "name": "updatePreview",
+          "params": [],
+          "exported": false,
+          "lineCount": 21
+        },
+        {
+          "name": "positionTooltip",
+          "params": [],
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "scrollJsonPreviewToTop",
+          "params": [],
+          "exported": false,
+          "lineCount": 17
+        },
+        {
+          "name": "scrollToJsonSection",
+          "params": [
+            "section"
+          ],
+          "exported": false,
+          "lineCount": 212
+        },
+        {
+          "name": "copyJSON",
+          "params": [],
+          "exported": false,
+          "lineCount": 24
+        },
+        {
+          "name": "showLoader",
+          "params": [],
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "hideLoader",
+          "params": [],
+          "exported": false,
+          "lineCount": 6
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 936,
+      "hasStructuralAnalysis": true
+    },
+    "studio/js/import-nodes.js": {
+      "filePath": "studio/js/import-nodes.js",
+      "contentHash": "303b8df432f460823779bc3cf66a536dc1533e9d2ce187037147b93c19dbda90",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 436,
+      "hasStructuralAnalysis": true
+    },
+    "studio/js/main.js": {
+      "filePath": "studio/js/main.js",
+      "contentHash": "4ace3c4763c4ea01a2bcd8ee94cc61dfa9d2a66cbfbef9c056320b7f88365ff5",
+      "functions": [
+        {
+          "name": "toggleJsonPreview",
+          "params": [],
+          "exported": false,
+          "lineCount": 36
+        },
+        {
+          "name": "restoreJsonPreviewState",
+          "params": [],
+          "exported": false,
+          "lineCount": 24
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 295,
+      "hasStructuralAnalysis": true
+    },
+    "studio/js/modals.js": {
+      "filePath": "studio/js/modals.js",
+      "contentHash": "79349cb2c339e5d065b586963acd1e20e689896c45a0618db9f542b14d630b06",
+      "functions": [
+        {
+          "name": "safeAttachAutocomplete",
+          "params": [
+            "input"
+          ],
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "renderConditionsList",
+          "params": [
+            "conditions",
+            "stepIndex"
+          ],
+          "exported": false,
+          "lineCount": 57
+        },
+        {
+          "name": "addCondition",
+          "params": [
+            "stepIndex"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "editCondition",
+          "params": [
+            "stepIndex",
+            "condIndex"
+          ],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "renderConditionTypeOptions",
+          "params": [
+            "sourceType",
+            "selectedType"
+          ],
+          "exported": false,
+          "lineCount": 21
+        },
+        {
+          "name": "showConditionModal",
+          "params": [
+            "stepIndex",
+            "condIndex",
+            "condition"
+          ],
+          "exported": false,
+          "lineCount": 102
+        },
+        {
+          "name": "renderConditionSourceFields",
+          "params": [
+            "sourceType",
+            "condition",
+            "stepOptions",
+            "stepIndex"
+          ],
+          "exported": false,
+          "lineCount": 72
+        },
+        {
+          "name": "updateConditionSourceFields",
+          "params": [],
+          "exported": false,
+          "lineCount": 32
+        },
+        {
+          "name": "renderConditionTypeFields",
+          "params": [
+            "type",
+            "condition",
+            "sourceType"
+          ],
+          "exported": false,
+          "lineCount": 72
+        },
+        {
+          "name": "updateConditionTypeFields",
+          "params": [],
+          "exported": false,
+          "lineCount": 38
+        },
+        {
+          "name": "saveCondition",
+          "params": [
+            "stepIndex",
+            "condIndex"
+          ],
+          "exported": false,
+          "lineCount": 98
+        },
+        {
+          "name": "removeCondition",
+          "params": [
+            "stepIndex",
+            "condIndex"
+          ],
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "closeConditionModal",
+          "params": [],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "renderValidationsList",
+          "params": [
+            "validations",
+            "stepIndex"
+          ],
+          "exported": false,
+          "lineCount": 54
+        },
+        {
+          "name": "addValidation",
+          "params": [
+            "stepIndex"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "editValidation",
+          "params": [
+            "stepIndex",
+            "valIndex"
+          ],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "showValidationModal",
+          "params": [
+            "stepIndex",
+            "valIndex",
+            "validation"
+          ],
+          "exported": false,
+          "lineCount": 149
+        },
+        {
+          "name": "toggleValidationType",
+          "params": [],
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "toggleValidationCriteria",
+          "params": [],
+          "exported": false,
+          "lineCount": 25
+        },
+        {
+          "name": "saveValidation",
+          "params": [
+            "stepIndex",
+            "valIndex"
+          ],
+          "exported": false,
+          "lineCount": 110
+        },
+        {
+          "name": "removeValidation",
+          "params": [
+            "stepIndex",
+            "valIndex"
+          ],
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "toggleSkipDefaultValidations",
+          "params": [
+            "stepIndex",
+            "skipDefaults"
+          ],
+          "exported": false,
+          "lineCount": 14
+        },
+        {
+          "name": "toggleSkipDefaultHeaders",
+          "params": [
+            "stepIndex",
+            "skipDefaults"
+          ],
+          "exported": false,
+          "lineCount": 14
+        },
+        {
+          "name": "closeValidationModal",
+          "params": [],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "renderPromptsList",
+          "params": [
+            "prompts",
+            "stepIndex"
+          ],
+          "exported": false,
+          "lineCount": 21
+        },
+        {
+          "name": "addPrompt",
+          "params": [
+            "stepIndex"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "editPrompt",
+          "params": [
+            "stepIndex",
+            "key"
+          ],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "showPromptModal",
+          "params": [
+            "stepIndex",
+            "existingKey"
+          ],
+          "exported": false,
+          "lineCount": 48
+        },
+        {
+          "name": "savePrompt",
+          "params": [
+            "stepIndex",
+            "existingKey"
+          ],
+          "exported": false,
+          "lineCount": 38
+        },
+        {
+          "name": "removePrompt",
+          "params": [
+            "stepIndex",
+            "key"
+          ],
+          "exported": false,
+          "lineCount": 14
+        },
+        {
+          "name": "closePromptModal",
+          "params": [],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "renderHeadersList",
+          "params": [
+            "headers",
+            "stepIndex"
+          ],
+          "exported": false,
+          "lineCount": 41
+        },
+        {
+          "name": "addHeader",
+          "params": [
+            "stepIndex"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "editHeader",
+          "params": [
+            "stepIndex",
+            "key"
+          ],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "showHeaderModal",
+          "params": [
+            "stepIndex",
+            "existingKey"
+          ],
+          "exported": false,
+          "lineCount": 48
+        },
+        {
+          "name": "saveHeader",
+          "params": [
+            "stepIndex",
+            "existingKey"
+          ],
+          "exported": false,
+          "lineCount": 32
+        },
+        {
+          "name": "removeHeader",
+          "params": [
+            "stepIndex",
+            "key"
+          ],
+          "exported": false,
+          "lineCount": 14
+        },
+        {
+          "name": "closeHeaderModal",
+          "params": [],
+          "exported": false,
+          "lineCount": 4
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1508,
+      "hasStructuralAnalysis": true
+    },
+    "studio/js/postman-parser.js": {
+      "filePath": "studio/js/postman-parser.js",
+      "contentHash": "af3b88c3f7d2b9f5a6b8e2d57420367f1b6508353c0bff0117b6965d6bd9387f",
+      "functions": [
+        {
+          "name": "parsePostmanCollection",
+          "params": [
+            "collection"
+          ],
+          "exported": false,
+          "lineCount": 523
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 524,
+      "hasStructuralAnalysis": true
+    },
+    "studio/js/postman-preview.js": {
+      "filePath": "studio/js/postman-preview.js",
+      "contentHash": "2aefc9b48e35c801e3a2cb881bbd447576f799d34afc48b39ec7b7178497b566",
+      "functions": [
+        {
+          "name": "showPostmanPreview",
+          "params": [
+            "parsedConfig"
+          ],
+          "exported": false,
+          "lineCount": 20
+        },
+        {
+          "name": "populatePreviewSummary",
+          "params": [
+            "parsedConfig"
+          ],
+          "exported": false,
+          "lineCount": 45
+        },
+        {
+          "name": "populatePreviewNodes",
+          "params": [
+            "nodes"
+          ],
+          "exported": false,
+          "lineCount": 52
+        },
+        {
+          "name": "populatePreviewVariables",
+          "params": [
+            "variables"
+          ],
+          "exported": false,
+          "lineCount": 35
+        },
+        {
+          "name": "populatePreviewAuth",
+          "params": [
+            "headers"
+          ],
+          "exported": false,
+          "lineCount": 45
+        },
+        {
+          "name": "populatePreviewValidations",
+          "params": [
+            "nodes"
+          ],
+          "exported": false,
+          "lineCount": 50
+        },
+        {
+          "name": "confirmPostmanImport",
+          "params": [],
+          "exported": false,
+          "lineCount": 61
+        },
+        {
+          "name": "cancelPostmanPreview",
+          "params": [],
+          "exported": false,
+          "lineCount": 11
+        },
+        {
+          "name": "escapeHtml",
+          "params": [
+            "text"
+          ],
+          "exported": false,
+          "lineCount": 6
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 376,
+      "hasStructuralAnalysis": true
+    },
+    "studio/js/state.js": {
+      "filePath": "studio/js/state.js",
+      "contentHash": "c7cb4db0f52efb9babeac2e44b643610bc963d7534540c92d261ef6782af9a3f",
+      "functions": [
+        {
+          "name": "getEmptyStateHTML",
+          "params": [],
+          "exported": false,
+          "lineCount": 27
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 44,
+      "hasStructuralAnalysis": true
+    },
+    "studio/js/templates.js": {
+      "filePath": "studio/js/templates.js",
+      "contentHash": "b61db6b0027f9c52c691d2aa054fb9b605c3f3e9eb17214eb4fd4172c71b6c95",
+      "functions": [
+        {
+          "name": "getTemplate",
+          "params": [
+            "templateType"
+          ],
+          "exported": false,
+          "lineCount": 142
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 143,
+      "hasStructuralAnalysis": true
+    },
+    "studio/js/theme-switcher.js": {
+      "filePath": "studio/js/theme-switcher.js",
+      "contentHash": "05bab7bf866ffde9859dd9d8c7133784a9f9e88d19e2b763ba9b9e4564cfa223",
+      "functions": [
+        {
+          "name": "initTheme",
+          "params": [],
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "toggleTheme",
+          "params": [],
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "setTheme",
+          "params": [
+            "theme",
+            "save"
+          ],
+          "exported": false,
+          "lineCount": 21
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 59,
+      "hasStructuralAnalysis": true
+    },
+    "studio/js/try-it-out.js": {
+      "filePath": "studio/js/try-it-out.js",
+      "contentHash": "2d0d98fef579b8d2f1f2841322f6701f1ceb4cbc72bbbf1833fb2fc3ce915a96",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1520,
+      "hasStructuralAnalysis": true
+    },
+    "studio/js/ui-renderer-bootstrap.js": {
+      "filePath": "studio/js/ui-renderer-bootstrap.js",
+      "contentHash": "738819abf846de01f8c7c18c801f01640650e24f15767c087486849c7824672f",
+      "functions": [
+        {
+          "name": "safeAttachAutocomplete",
+          "params": [
+            "input"
+          ],
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "escapeHtml",
+          "params": [
+            "text"
+          ],
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "renderEditor",
+          "params": [],
+          "exported": false,
+          "lineCount": 147
+        },
+        {
+          "name": "renderGlobalVariables",
+          "params": [],
+          "exported": false,
+          "lineCount": 37
+        },
+        {
+          "name": "addGlobalVariable",
+          "params": [],
+          "exported": false,
+          "lineCount": 9
+        },
+        {
+          "name": "updateGlobalVariable",
+          "params": [
+            "index",
+            "field",
+            "value"
+          ],
+          "exported": false,
+          "lineCount": 18
+        },
+        {
+          "name": "removeGlobalVariable",
+          "params": [
+            "index"
+          ],
+          "exported": false,
+          "lineCount": 13
+        },
+        {
+          "name": "renderDefaultHeaders",
+          "params": [],
+          "exported": false,
+          "lineCount": 39
+        },
+        {
+          "name": "renderResponseSchemas",
+          "params": [],
+          "exported": false,
+          "lineCount": 61
+        },
+        {
+          "name": "deleteSchema",
+          "params": [
+            "nodeId"
+          ],
+          "exported": false,
+          "lineCount": 19
+        },
+        {
+          "name": "clearAllSchemas",
+          "params": [],
+          "exported": false,
+          "lineCount": 12
+        },
+        {
+          "name": "updateResponseSchemasHeaderCount",
+          "params": [],
+          "exported": false,
+          "lineCount": 10
+        },
+        {
+          "name": "renderSteps",
+          "params": [],
+          "exported": false,
+          "lineCount": 195
+        },
+        {
+          "name": "initFloatingAddNodeButtons",
+          "params": [],
+          "exported": false,
+          "lineCount": 144
+        },
+        {
+          "name": "getMethodBorderColor",
+          "params": [
+            "method"
+          ],
+          "exported": false,
+          "lineCount": 10
+        },
+        {
+          "name": "getMethodBadgeClass",
+          "params": [
+            "method"
+          ],
+          "exported": false,
+          "lineCount": 10
+        },
+        {
+          "name": "renderStepForm",
+          "params": [
+            "step",
+            "index"
+          ],
+          "exported": false,
+          "lineCount": 169
+        },
+        {
+          "name": "toggleSection",
+          "params": [
+            "header"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "updateConfig",
+          "params": [],
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "updateStepDraggableState",
+          "params": [
+            "index",
+            "isDraggable"
+          ],
+          "exported": false,
+          "lineCount": 30
+        },
+        {
+          "name": "toggleBodyVisibility",
+          "params": [
+            "index",
+            "method"
+          ],
+          "exported": false,
+          "lineCount": 10
+        },
+        {
+          "name": "updateStepAsync",
+          "params": [
+            "index",
+            "field",
+            "value"
+          ],
+          "exported": false,
+          "lineCount": 34
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1058,
+      "hasStructuralAnalysis": true
+    },
+    "studio/js/ui-renderer.js": {
+      "filePath": "studio/js/ui-renderer.js",
+      "contentHash": "d43cc088c9b00e483c0a00efb83a53ff2bbb6ae2717c8984caf37676a966ed7e",
+      "functions": [
+        {
+          "name": "safeAttachAutocomplete",
+          "params": [
+            "input"
+          ],
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "renderEditor",
+          "params": [],
+          "exported": false,
+          "lineCount": 99
+        },
+        {
+          "name": "renderGlobalVariables",
+          "params": [],
+          "exported": false,
+          "lineCount": 27
+        },
+        {
+          "name": "addGlobalVariable",
+          "params": [],
+          "exported": false,
+          "lineCount": 9
+        },
+        {
+          "name": "updateGlobalVariable",
+          "params": [
+            "index",
+            "field",
+            "value"
+          ],
+          "exported": false,
+          "lineCount": 18
+        },
+        {
+          "name": "removeGlobalVariable",
+          "params": [
+            "index"
+          ],
+          "exported": false,
+          "lineCount": 13
+        },
+        {
+          "name": "renderDefaultHeaders",
+          "params": [],
+          "exported": false,
+          "lineCount": 27
+        },
+        {
+          "name": "renderSteps",
+          "params": [],
+          "exported": false,
+          "lineCount": 37
+        },
+        {
+          "name": "renderStepForm",
+          "params": [
+            "step",
+            "index"
+          ],
+          "exported": false,
+          "lineCount": 108
+        },
+        {
+          "name": "toggleSection",
+          "params": [
+            "header"
+          ],
+          "exported": false,
+          "lineCount": 18
+        },
+        {
+          "name": "updateConfig",
+          "params": [],
+          "exported": false,
+          "lineCount": 8
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 390,
+      "hasStructuralAnalysis": true
+    },
+    "studio/README.md": {
+      "filePath": "studio/README.md",
+      "contentHash": "c677e11d10c6d07854ed595c0e2f37ef75b1cf6e74d1207a9a006bb01e95a814",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 287,
+      "hasStructuralAnalysis": true
+    },
+    "studio/templates/nodes/auth/api-key.json": {
+      "filePath": "studio/templates/nodes/auth/api-key.json",
+      "contentHash": "438efc3688260008589281bcb84eeeeb6e8554756f379f816b90c6dad6a21b70",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 21,
+      "hasStructuralAnalysis": true
+    },
+    "studio/templates/nodes/auth/bearer-token.json": {
+      "filePath": "studio/templates/nodes/auth/bearer-token.json",
+      "contentHash": "db6ecb3f8826ae88a46baa873339354c784742b67089bd0088cde96d41ac3ec3",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 23,
+      "hasStructuralAnalysis": true
+    },
+    "studio/templates/nodes/auth/oauth-flow.json": {
+      "filePath": "studio/templates/nodes/auth/oauth-flow.json",
+      "contentHash": "47e9dbca2fc57da0a56933638329f771c4cddca2d9a719040176bfe34f4446d9",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 47,
+      "hasStructuralAnalysis": true
+    },
+    "studio/templates/nodes/conditional/premium-user.json": {
+      "filePath": "studio/templates/nodes/conditional/premium-user.json",
+      "contentHash": "4b41749239212a6b60cd615eaad915d6550918447be340b08e8ed62ea2153586",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 26,
+      "hasStructuralAnalysis": true
+    },
+    "studio/templates/nodes/conditional/skip-on-error.json": {
+      "filePath": "studio/templates/nodes/conditional/skip-on-error.json",
+      "contentHash": "04f8432d59e95affa818af2190e7fcaf1503559d439b38cab7467481016021e6",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 25,
+      "hasStructuralAnalysis": true
+    },
+    "studio/templates/nodes/user-input/custom-input.json": {
+      "filePath": "studio/templates/nodes/user-input/custom-input.json",
+      "contentHash": "0be822fb94bfc0a6d0db77eaf44a85e6644353a42d3706397641cba10ecd1a26",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 24,
+      "hasStructuralAnalysis": true
+    },
+    "studio/templates/nodes/user-input/username-password.json": {
+      "filePath": "studio/templates/nodes/user-input/username-password.json",
+      "contentHash": "bf5b523d6367df46268a8e22d9b92f22e90c87131f02df4c8cd8d2018f30b4dc",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 27,
+      "hasStructuralAnalysis": true
+    },
+    "studio/templates/nodes/user-input/verification-code.json": {
+      "filePath": "studio/templates/nodes/user-input/verification-code.json",
+      "contentHash": "1be989b653e9eab9e314d7c72a9bd9c4196e12cd1858bd1aeae30b5e5ac28aef",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 25,
+      "hasStructuralAnalysis": true
+    },
+    "studio/templates/nodes/validation/multi-field.json": {
+      "filePath": "studio/templates/nodes/validation/multi-field.json",
+      "contentHash": "1b0aebe615e8d4725dad3e6a9119472053507183f4ad9f8a1d2408c900e85c4f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 24,
+      "hasStructuralAnalysis": true
+    },
+    "studio/templates/nodes/validation/paginated-response.json": {
+      "filePath": "studio/templates/nodes/validation/paginated-response.json",
+      "contentHash": "d6c4d4d0faeef796c5df2ec928ed0ac0b4113098bb2b802230aeacc22437a7ae",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 22,
+      "hasStructuralAnalysis": true
+    },
+    "studio/templates/nodes/validation/status-token-extract.json": {
+      "filePath": "studio/templates/nodes/validation/status-token-extract.json",
+      "contentHash": "41deda09aaecd42792bf3e5c482dbbb4389b9dc59d7ca0e4c39f3ab4fadd9d32",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 24,
+      "hasStructuralAnalysis": true
+    },
+    "tests/config-test-comparisons.json": {
+      "filePath": "tests/config-test-comparisons.json",
+      "contentHash": "eaf7ac9cfb78eba225dc9622b0b8a0b9a0f0206119deb0388294544b34caec3d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 25,
+      "hasStructuralAnalysis": true
+    },
+    "tests/config-test-condition-variables.json": {
+      "filePath": "tests/config-test-condition-variables.json",
+      "contentHash": "205e1db0366fdbe628a5ffa8dd94027fdc2c2a295da1dcaa0e2dd2279e46d430",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 113,
+      "hasStructuralAnalysis": true
+    },
+    "tests/config-test-defaults.json": {
+      "filePath": "tests/config-test-defaults.json",
+      "contentHash": "368d9afbf76fbe9a4b3c236d104b97c1f0d335c7f0f6946a946a793964635b2e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 57,
+      "hasStructuralAnalysis": true
+    },
+    "tests/config-test-duplicate-ids.json": {
+      "filePath": "tests/config-test-duplicate-ids.json",
+      "contentHash": "7c844306aac33ddbea00b91db4ab8413904374aa3361f171c95b899d5434c0da",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 29,
+      "hasStructuralAnalysis": true
+    },
+    "tests/config-test-invalid-json-body.json": {
+      "filePath": "tests/config-test-invalid-json-body.json",
+      "contentHash": "ff88d19ae2f15f868f314fb30fefbd0b3db9dfb31f99af38eada0dca3ee15f9f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 60,
+      "hasStructuralAnalysis": true
+    },
+    "tests/config-test-malformed-placeholders.json": {
+      "filePath": "tests/config-test-malformed-placeholders.json",
+      "contentHash": "3d4af7be3e15630f07e0a35b69466f8b851bff9e6b677be98171833bbfb5bcec",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 41,
+      "hasStructuralAnalysis": true
+    },
+    "tests/config-test-multiple-validations.json": {
+      "filePath": "tests/config-test-multiple-validations.json",
+      "contentHash": "db8d219f45b4fa88b5bf09388d1293c1db97f8eae4728e98b33e71afd6afaffa",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 116,
+      "hasStructuralAnalysis": true
+    },
+    "tests/config-test-persistent-input.json": {
+      "filePath": "tests/config-test-persistent-input.json",
+      "contentHash": "9fcdeddad3d0caf6ce36cc896bee74d491a580d558e686c47b99ae6c8425ed91",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 89,
+      "hasStructuralAnalysis": true
+    },
+    "tests/config-test-skip-defaults.json": {
+      "filePath": "tests/config-test-skip-defaults.json",
+      "contentHash": "e8cadc625ff0435b1124949e45606c0ab391aa05479845d8509406f2db9a42f9",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 132,
+      "hasStructuralAnalysis": true
+    },
+    "tests/config-test-validation-errors.json": {
+      "filePath": "tests/config-test-validation-errors.json",
+      "contentHash": "46037fb630b20be1e6ec4c682b5a676d95a741f60c8356c2624d767ce532c784",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 71,
+      "hasStructuralAnalysis": true
+    },
+    "tests/config-test-variables.json": {
+      "filePath": "tests/config-test-variables.json",
+      "contentHash": "e775334066ef7d6e937985e67a0be43795b402253f0a019e28a61eae9d2e58e0",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 75,
+      "hasStructuralAnalysis": true
+    },
+    "tests/README.md": {
+      "filePath": "tests/README.md",
+      "contentHash": "3a6bf8f924db5a3d59fbeecf17a64a637691cd5d6a6c230d7907d0e70a971d43",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 30,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test-validator-categories.js": {
+      "filePath": "tests/test-validator-categories.js",
+      "contentHash": "fa1da26fc4389ae1198b22c1da16dde786a55b173b3eb7ae6863c9fe42abcf0e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 71,
+      "hasStructuralAnalysis": true
+    }
+  }
+}
