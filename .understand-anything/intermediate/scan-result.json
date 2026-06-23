@@ -1,0 +1,869 @@
+{
+  "name": "flowsphere",
+  "description": "Automate sequential HTTP workflows through JSON configuration. Create, edit and execute via visual Studio or CLI. Supports conditional execution, response chaining, user input prompts, and validations. Note: this project has over 100 source files; consider scoping analysis to a subdirectory for faster results.",
+  "languages": [
+    "css",
+    "html",
+    "javascript",
+    "json",
+    "markdown",
+    "webmanifest"
+  ],
+  "frameworks": [
+    "Express"
+  ],
+  "files": [
+    {
+      "path": ".npmignore",
+      "language": "unknown",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".understand-anything/.understandignore",
+      "language": "unknown",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".understand-anything/config.json",
+      "language": "json",
+      "sizeLines": 3,
+      "fileCategory": "config"
+    },
+    {
+      "path": "bin/flowsphere.js",
+      "language": "javascript",
+      "sizeLines": 1232,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CLAUDE.md",
+      "language": "markdown",
+      "sizeLines": 908,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/features/enhanced-postman-import.md",
+      "language": "markdown",
+      "sizeLines": 384,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/features/execution-log-visualizer.md",
+      "language": "markdown",
+      "sizeLines": 146,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/features/export-to-postman.md",
+      "language": "markdown",
+      "sizeLines": 185,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/features/flow-runner-execution-controls.md",
+      "language": "markdown",
+      "sizeLines": 418,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/features/multi-environment-variable-groups.md",
+      "language": "markdown",
+      "sizeLines": 841,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/features/node-templates-import-system.md",
+      "language": "markdown",
+      "sizeLines": 666,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/features/oauth-callback-capture.md",
+      "language": "markdown",
+      "sizeLines": 527,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/features/response-header-access.md",
+      "language": "markdown",
+      "sizeLines": 1099,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/features/swagger-openapi-import.md",
+      "language": "markdown",
+      "sizeLines": 1321,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/features/visual-workflow-storytelling-export.md",
+      "language": "markdown",
+      "sizeLines": 826,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/implementation/enhanced-postman-import-status.md",
+      "language": "markdown",
+      "sizeLines": 191,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/implementation/phase1-stop-implementation-status.md",
+      "language": "markdown",
+      "sizeLines": 118,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/implementation/phase2-step-by-step-implementation-status.md",
+      "language": "markdown",
+      "sizeLines": 267,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/implementation/phase3-auto-step-implementation-status.md",
+      "language": "markdown",
+      "sizeLines": 254,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/INTERNAL-TASKS.md",
+      "language": "markdown",
+      "sizeLines": 220,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/presentation/flowsphere.html",
+      "language": "html",
+      "sizeLines": 207,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "docs/presentation/flowsphere.md",
+      "language": "markdown",
+      "sizeLines": 167,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/prompts/API_FlowSphere_Node_Execution_Branding_Prompt.md",
+      "language": "markdown",
+      "sizeLines": 64,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/prompts/API_FlowSphere_Theme_Sonnet_4.5_v2.md",
+      "language": "markdown",
+      "sizeLines": 157,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/prompts/API_FlowSphere_Theme_Sonnet_4.5.md",
+      "language": "markdown",
+      "sizeLines": 143,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/prompts/claude_bash_http_sequence_prompt.md",
+      "language": "markdown",
+      "sizeLines": 112,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/prompts/claude_postman_to_bash_config_prompt.md",
+      "language": "markdown",
+      "sizeLines": 106,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/prompts/flow_control_panel_branding.md",
+      "language": "markdown",
+      "sizeLines": 93,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/prompts/flow_execution_modal_lifecycle.md",
+      "language": "markdown",
+      "sizeLines": 128,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/prompts/flow_execution_modes_branding.md",
+      "language": "markdown",
+      "sizeLines": 106,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/prompts/FlowSphere_Load_Config_Rebrand_Prompt.md",
+      "language": "markdown",
+      "sizeLines": 77,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/prompts/FlowSphere_Studio_Logo_Adjustment_Prompt.md",
+      "language": "markdown",
+      "sizeLines": 76,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/technical/change-impact-guide.md",
+      "language": "markdown",
+      "sizeLines": 779,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/technical/config-validation-system.md",
+      "language": "markdown",
+      "sizeLines": 332,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/technical/core-architecture.md",
+      "language": "markdown",
+      "sizeLines": 572,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/technical/flow-execution-architecture.md",
+      "language": "markdown",
+      "sizeLines": 53,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/technical/modal-system.md",
+      "language": "markdown",
+      "sizeLines": 278,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/technical/toggleable-features-guide.md",
+      "language": "markdown",
+      "sizeLines": 584,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "examples/config-comprehensive-demo.json",
+      "language": "json",
+      "sizeLines": 276,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/config-ids-token.json",
+      "language": "json",
+      "sizeLines": 29,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/config-oauth-example.json",
+      "language": "json",
+      "sizeLines": 63,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/config-simple.json",
+      "language": "json",
+      "sizeLines": 59,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/config-test-features.json",
+      "language": "json",
+      "sizeLines": 46,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/config-user-input.json",
+      "language": "json",
+      "sizeLines": 45,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/config.json",
+      "language": "json",
+      "sizeLines": 161,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/README.md",
+      "language": "markdown",
+      "sizeLines": 33,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "legacy/flowsphere",
+      "language": "unknown",
+      "sizeLines": 1846,
+      "fileCategory": "code"
+    },
+    {
+      "path": "legacy/README.md",
+      "language": "markdown",
+      "sizeLines": 61,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "lib/conditions.js",
+      "language": "javascript",
+      "sizeLines": 286,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/config-validator.js",
+      "language": "javascript",
+      "sizeLines": 1011,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/executor.js",
+      "language": "javascript",
+      "sizeLines": 389,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/http-client.js",
+      "language": "javascript",
+      "sizeLines": 98,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/index.js",
+      "language": "javascript",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/logger.js",
+      "language": "javascript",
+      "sizeLines": 134,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/substitution.js",
+      "language": "javascript",
+      "sizeLines": 222,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/utils.js",
+      "language": "javascript",
+      "sizeLines": 228,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/validator.js",
+      "language": "javascript",
+      "sizeLines": 217,
+      "fileCategory": "code"
+    },
+    {
+      "path": "package.json",
+      "language": "json",
+      "sizeLines": 51,
+      "fileCategory": "config"
+    },
+    {
+      "path": "postman-tools/fakeAPI-config.json",
+      "language": "json",
+      "sizeLines": 268,
+      "fileCategory": "config"
+    },
+    {
+      "path": "postman-tools/parse-postman.js",
+      "language": "javascript",
+      "sizeLines": 730,
+      "fileCategory": "code"
+    },
+    {
+      "path": "postman-tools/README.md",
+      "language": "markdown",
+      "sizeLines": 83,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "postman-tools/sample files/Endpoint 3.postman_collection.json",
+      "language": "json",
+      "sizeLines": 814,
+      "fileCategory": "config"
+    },
+    {
+      "path": "postman-tools/sample files/Fake API.postman_collection.json",
+      "language": "json",
+      "sizeLines": 1034,
+      "fileCategory": "config"
+    },
+    {
+      "path": "postman-tools/sample files/FakeAPI Heroku.postman_environment_with_values.json",
+      "language": "json",
+      "sizeLines": 23,
+      "fileCategory": "config"
+    },
+    {
+      "path": "postman-tools/sample files/FakeAPI Heroku.postman_environment.json",
+      "language": "json",
+      "sizeLines": 23,
+      "fileCategory": "config"
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "sizeLines": 499,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ROADMAP.md",
+      "language": "markdown",
+      "sizeLines": 456,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "studio/assets/favicon/site.webmanifest",
+      "language": "webmanifest",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "studio/css/styles.css",
+      "language": "css",
+      "sizeLines": 2050,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "studio/index.html",
+      "language": "html",
+      "sizeLines": 793,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "studio/js/autocomplete.js",
+      "language": "javascript",
+      "sizeLines": 1052,
+      "fileCategory": "code"
+    },
+    {
+      "path": "studio/js/bootstrap-modal-bridge.js",
+      "language": "javascript",
+      "sizeLines": 457,
+      "fileCategory": "code"
+    },
+    {
+      "path": "studio/js/config-manager.js",
+      "language": "javascript",
+      "sizeLines": 222,
+      "fileCategory": "code"
+    },
+    {
+      "path": "studio/js/config-validator-ui.js",
+      "language": "javascript",
+      "sizeLines": 205,
+      "fileCategory": "code"
+    },
+    {
+      "path": "studio/js/core/feature-registry.js",
+      "language": "javascript",
+      "sizeLines": 324,
+      "fileCategory": "code"
+    },
+    {
+      "path": "studio/js/core/safe-wrappers.js",
+      "language": "javascript",
+      "sizeLines": 74,
+      "fileCategory": "code"
+    },
+    {
+      "path": "studio/js/core/settings-ui.js",
+      "language": "javascript",
+      "sizeLines": 228,
+      "fileCategory": "code"
+    },
+    {
+      "path": "studio/js/core/ui-adapter.js",
+      "language": "javascript",
+      "sizeLines": 120,
+      "fileCategory": "code"
+    },
+    {
+      "path": "studio/js/drag-drop-handler.js",
+      "language": "javascript",
+      "sizeLines": 540,
+      "fileCategory": "code"
+    },
+    {
+      "path": "studio/js/flow-runner.js",
+      "language": "javascript",
+      "sizeLines": 3313,
+      "fileCategory": "code"
+    },
+    {
+      "path": "studio/js/form-handlers.js",
+      "language": "javascript",
+      "sizeLines": 935,
+      "fileCategory": "code"
+    },
+    {
+      "path": "studio/js/import-nodes.js",
+      "language": "javascript",
+      "sizeLines": 435,
+      "fileCategory": "code"
+    },
+    {
+      "path": "studio/js/main.js",
+      "language": "javascript",
+      "sizeLines": 294,
+      "fileCategory": "code"
+    },
+    {
+      "path": "studio/js/modals.js",
+      "language": "javascript",
+      "sizeLines": 1507,
+      "fileCategory": "code"
+    },
+    {
+      "path": "studio/js/postman-parser.js",
+      "language": "javascript",
+      "sizeLines": 523,
+      "fileCategory": "code"
+    },
+    {
+      "path": "studio/js/postman-preview.js",
+      "language": "javascript",
+      "sizeLines": 375,
+      "fileCategory": "code"
+    },
+    {
+      "path": "studio/js/state.js",
+      "language": "javascript",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    },
+    {
+      "path": "studio/js/templates.js",
+      "language": "javascript",
+      "sizeLines": 142,
+      "fileCategory": "code"
+    },
+    {
+      "path": "studio/js/theme-switcher.js",
+      "language": "javascript",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "studio/js/try-it-out.js",
+      "language": "javascript",
+      "sizeLines": 1519,
+      "fileCategory": "code"
+    },
+    {
+      "path": "studio/js/ui-renderer-bootstrap.js",
+      "language": "javascript",
+      "sizeLines": 1057,
+      "fileCategory": "code"
+    },
+    {
+      "path": "studio/js/ui-renderer.js",
+      "language": "javascript",
+      "sizeLines": 389,
+      "fileCategory": "code"
+    },
+    {
+      "path": "studio/README.md",
+      "language": "markdown",
+      "sizeLines": 286,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "studio/templates/nodes/auth/api-key.json",
+      "language": "json",
+      "sizeLines": 20,
+      "fileCategory": "config"
+    },
+    {
+      "path": "studio/templates/nodes/auth/bearer-token.json",
+      "language": "json",
+      "sizeLines": 22,
+      "fileCategory": "config"
+    },
+    {
+      "path": "studio/templates/nodes/auth/oauth-flow.json",
+      "language": "json",
+      "sizeLines": 46,
+      "fileCategory": "config"
+    },
+    {
+      "path": "studio/templates/nodes/conditional/premium-user.json",
+      "language": "json",
+      "sizeLines": 25,
+      "fileCategory": "config"
+    },
+    {
+      "path": "studio/templates/nodes/conditional/skip-on-error.json",
+      "language": "json",
+      "sizeLines": 24,
+      "fileCategory": "config"
+    },
+    {
+      "path": "studio/templates/nodes/user-input/custom-input.json",
+      "language": "json",
+      "sizeLines": 23,
+      "fileCategory": "config"
+    },
+    {
+      "path": "studio/templates/nodes/user-input/username-password.json",
+      "language": "json",
+      "sizeLines": 26,
+      "fileCategory": "config"
+    },
+    {
+      "path": "studio/templates/nodes/user-input/verification-code.json",
+      "language": "json",
+      "sizeLines": 24,
+      "fileCategory": "config"
+    },
+    {
+      "path": "studio/templates/nodes/validation/multi-field.json",
+      "language": "json",
+      "sizeLines": 23,
+      "fileCategory": "config"
+    },
+    {
+      "path": "studio/templates/nodes/validation/paginated-response.json",
+      "language": "json",
+      "sizeLines": 21,
+      "fileCategory": "config"
+    },
+    {
+      "path": "studio/templates/nodes/validation/status-token-extract.json",
+      "language": "json",
+      "sizeLines": 23,
+      "fileCategory": "config"
+    },
+    {
+      "path": "tests/config-test-comparisons.json",
+      "language": "json",
+      "sizeLines": 24,
+      "fileCategory": "config"
+    },
+    {
+      "path": "tests/config-test-condition-variables.json",
+      "language": "json",
+      "sizeLines": 112,
+      "fileCategory": "config"
+    },
+    {
+      "path": "tests/config-test-defaults.json",
+      "language": "json",
+      "sizeLines": 56,
+      "fileCategory": "config"
+    },
+    {
+      "path": "tests/config-test-duplicate-ids.json",
+      "language": "json",
+      "sizeLines": 28,
+      "fileCategory": "config"
+    },
+    {
+      "path": "tests/config-test-invalid-json-body.json",
+      "language": "json",
+      "sizeLines": 59,
+      "fileCategory": "config"
+    },
+    {
+      "path": "tests/config-test-malformed-placeholders.json",
+      "language": "json",
+      "sizeLines": 40,
+      "fileCategory": "config"
+    },
+    {
+      "path": "tests/config-test-multiple-validations.json",
+      "language": "json",
+      "sizeLines": 115,
+      "fileCategory": "config"
+    },
+    {
+      "path": "tests/config-test-persistent-input.json",
+      "language": "json",
+      "sizeLines": 88,
+      "fileCategory": "config"
+    },
+    {
+      "path": "tests/config-test-skip-defaults.json",
+      "language": "json",
+      "sizeLines": 131,
+      "fileCategory": "config"
+    },
+    {
+      "path": "tests/config-test-validation-errors.json",
+      "language": "json",
+      "sizeLines": 70,
+      "fileCategory": "config"
+    },
+    {
+      "path": "tests/config-test-variables.json",
+      "language": "json",
+      "sizeLines": 74,
+      "fileCategory": "config"
+    },
+    {
+      "path": "tests/README.md",
+      "language": "markdown",
+      "sizeLines": 29,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "tests/test-validator-categories.js",
+      "language": "javascript",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    }
+  ],
+  "totalFiles": 117,
+  "filteredByIgnore": 0,
+  "estimatedComplexity": "moderate",
+  "importMap": {
+    ".npmignore": [],
+    ".understand-anything/.understandignore": [],
+    ".understand-anything/config.json": [],
+    "bin/flowsphere.js": [
+      "lib/conditions.js",
+      "lib/config-validator.js",
+      "lib/executor.js",
+      "lib/logger.js",
+      "lib/validator.js",
+      "package.json"
+    ],
+    "CLAUDE.md": [],
+    "docs/features/enhanced-postman-import.md": [],
+    "docs/features/execution-log-visualizer.md": [],
+    "docs/features/export-to-postman.md": [],
+    "docs/features/flow-runner-execution-controls.md": [],
+    "docs/features/multi-environment-variable-groups.md": [],
+    "docs/features/node-templates-import-system.md": [],
+    "docs/features/oauth-callback-capture.md": [],
+    "docs/features/response-header-access.md": [],
+    "docs/features/swagger-openapi-import.md": [],
+    "docs/features/visual-workflow-storytelling-export.md": [],
+    "docs/implementation/enhanced-postman-import-status.md": [],
+    "docs/implementation/phase1-stop-implementation-status.md": [],
+    "docs/implementation/phase2-step-by-step-implementation-status.md": [],
+    "docs/implementation/phase3-auto-step-implementation-status.md": [],
+    "docs/INTERNAL-TASKS.md": [],
+    "docs/presentation/flowsphere.html": [],
+    "docs/presentation/flowsphere.md": [],
+    "docs/prompts/API_FlowSphere_Node_Execution_Branding_Prompt.md": [],
+    "docs/prompts/API_FlowSphere_Theme_Sonnet_4.5_v2.md": [],
+    "docs/prompts/API_FlowSphere_Theme_Sonnet_4.5.md": [],
+    "docs/prompts/claude_bash_http_sequence_prompt.md": [],
+    "docs/prompts/claude_postman_to_bash_config_prompt.md": [],
+    "docs/prompts/flow_control_panel_branding.md": [],
+    "docs/prompts/flow_execution_modal_lifecycle.md": [],
+    "docs/prompts/flow_execution_modes_branding.md": [],
+    "docs/prompts/FlowSphere_Load_Config_Rebrand_Prompt.md": [],
+    "docs/prompts/FlowSphere_Studio_Logo_Adjustment_Prompt.md": [],
+    "docs/technical/change-impact-guide.md": [],
+    "docs/technical/config-validation-system.md": [],
+    "docs/technical/core-architecture.md": [],
+    "docs/technical/flow-execution-architecture.md": [],
+    "docs/technical/modal-system.md": [],
+    "docs/technical/toggleable-features-guide.md": [],
+    "examples/config-comprehensive-demo.json": [],
+    "examples/config-ids-token.json": [],
+    "examples/config-oauth-example.json": [],
+    "examples/config-simple.json": [],
+    "examples/config-test-features.json": [],
+    "examples/config-user-input.json": [],
+    "examples/config.json": [],
+    "examples/README.md": [],
+    "legacy/flowsphere": [],
+    "legacy/README.md": [],
+    "lib/conditions.js": [
+      "lib/substitution.js",
+      "lib/utils.js"
+    ],
+    "lib/config-validator.js": [],
+    "lib/executor.js": [
+      "lib/conditions.js",
+      "lib/config-validator.js",
+      "lib/http-client.js",
+      "lib/substitution.js",
+      "lib/utils.js",
+      "lib/validator.js"
+    ],
+    "lib/http-client.js": [],
+    "lib/index.js": [
+      "lib/executor.js",
+      "lib/logger.js"
+    ],
+    "lib/logger.js": [
+      "lib/utils.js"
+    ],
+    "lib/substitution.js": [
+      "lib/utils.js"
+    ],
+    "lib/utils.js": [],
+    "lib/validator.js": [
+      "lib/utils.js"
+    ],
+    "package.json": [],
+    "postman-tools/fakeAPI-config.json": [],
+    "postman-tools/parse-postman.js": [],
+    "postman-tools/README.md": [],
+    "postman-tools/sample files/Endpoint 3.postman_collection.json": [],
+    "postman-tools/sample files/Fake API.postman_collection.json": [],
+    "postman-tools/sample files/FakeAPI Heroku.postman_environment_with_values.json": [],
+    "postman-tools/sample files/FakeAPI Heroku.postman_environment.json": [],
+    "README.md": [],
+    "ROADMAP.md": [],
+    "studio/assets/favicon/site.webmanifest": [],
+    "studio/css/styles.css": [],
+    "studio/index.html": [],
+    "studio/js/autocomplete.js": [],
+    "studio/js/bootstrap-modal-bridge.js": [],
+    "studio/js/config-manager.js": [],
+    "studio/js/config-validator-ui.js": [],
+    "studio/js/core/feature-registry.js": [],
+    "studio/js/core/safe-wrappers.js": [],
+    "studio/js/core/settings-ui.js": [],
+    "studio/js/core/ui-adapter.js": [],
+    "studio/js/drag-drop-handler.js": [],
+    "studio/js/flow-runner.js": [],
+    "studio/js/form-handlers.js": [],
+    "studio/js/import-nodes.js": [],
+    "studio/js/main.js": [],
+    "studio/js/modals.js": [],
+    "studio/js/postman-parser.js": [],
+    "studio/js/postman-preview.js": [],
+    "studio/js/state.js": [],
+    "studio/js/templates.js": [],
+    "studio/js/theme-switcher.js": [],
+    "studio/js/try-it-out.js": [],
+    "studio/js/ui-renderer-bootstrap.js": [],
+    "studio/js/ui-renderer.js": [],
+    "studio/README.md": [],
+    "studio/templates/nodes/auth/api-key.json": [],
+    "studio/templates/nodes/auth/bearer-token.json": [],
+    "studio/templates/nodes/auth/oauth-flow.json": [],
+    "studio/templates/nodes/conditional/premium-user.json": [],
+    "studio/templates/nodes/conditional/skip-on-error.json": [],
+    "studio/templates/nodes/user-input/custom-input.json": [],
+    "studio/templates/nodes/user-input/username-password.json": [],
+    "studio/templates/nodes/user-input/verification-code.json": [],
+    "studio/templates/nodes/validation/multi-field.json": [],
+    "studio/templates/nodes/validation/paginated-response.json": [],
+    "studio/templates/nodes/validation/status-token-extract.json": [],
+    "tests/config-test-comparisons.json": [],
+    "tests/config-test-condition-variables.json": [],
+    "tests/config-test-defaults.json": [],
+    "tests/config-test-duplicate-ids.json": [],
+    "tests/config-test-invalid-json-body.json": [],
+    "tests/config-test-malformed-placeholders.json": [],
+    "tests/config-test-multiple-validations.json": [],
+    "tests/config-test-persistent-input.json": [],
+    "tests/config-test-skip-defaults.json": [],
+    "tests/config-test-validation-errors.json": [],
+    "tests/config-test-variables.json": [],
+    "tests/README.md": [],
+    "tests/test-validator-categories.js": [
+      "lib/config-validator.js"
+    ]
+  }
+}
