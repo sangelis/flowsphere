@@ -240,7 +240,8 @@ async function launchStudio(port = 3737) {
         vars: config.variables || {},
         responses: responses,
         input: {}, // No user input for try it out (yet)
-        enableDebug: config.enableDebug || false
+        enableDebug: config.enableDebug || false,
+        allowUnsafeCommands: config.allowUnsafeCommands || false
       };
 
       const startTime = Date.now();
@@ -410,7 +411,7 @@ async function launchStudio(port = 3737) {
         }
 
         // Evaluate conditions
-        const context = { vars, responses, input: userInput, enableDebug: false };
+        const context = { vars, responses, input: userInput, enableDebug: false, allowUnsafeCommands: loadedConfig.allowUnsafeCommands || false };
         const { shouldExecute, skipReason } = evaluateConditions(conditions, context);
 
         if (!shouldExecute) {
@@ -717,7 +718,7 @@ async function launchStudio(port = 3737) {
           }
 
           // Evaluate conditions
-          const context = { vars, responses, input: userInput, enableDebug };
+          const context = { vars, responses, input: userInput, enableDebug, allowUnsafeCommands: loadedConfig.allowUnsafeCommands || false };
           const { shouldExecute, skipReason } = evaluateConditions(conditions, context);
 
           if (!shouldExecute) {

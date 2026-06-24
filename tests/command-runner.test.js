@@ -1,6 +1,6 @@
 const assert = require('assert');
 const path = require('path');
-const { executeCommand } = require('../lib/command-runner');
+const { executeCommand, validateCommandSecurity } = require('../lib/command-runner');
 
 const MOCK = path.join(__dirname, 'fixtures', 'mock-client.js');
 const NODE = process.execPath;
@@ -46,9 +46,9 @@ async function run() {
     '8: timeout rejects'
   );
 
-  // 9. ENOENT -> "Command not found"
+  // 9. ENOENT -> "Command not found" (absolute path to non-existent binary)
   await assert.rejects(
-    () => executeCommand({ command: 'definitely-not-a-real-binary-xyz', args: [] }),
+    () => executeCommand({ command: '/definitely/not/a/real/binary/xyz', args: [] }),
     /Command not found/,
     '9: ENOENT rejects'
   );
@@ -67,6 +67,40 @@ async function run() {
   assert.ok(r.body.json && typeof r.body.json.answer === 'string', '11: unicode json parsed');
   assert.ok(!r.body.json.answer.includes('\uFFFD'), '11: no replacement chars');
   assert.strictEqual(r.body.json.answer, expectedAnswer, '11: multibyte output intact');
+
+  // 12. Safe mode (default): bare command name is rejected
+  await assert.rejects(
+    () => executeCommand({ command: 'node', args: [] }),
+    /must be an absolute path/,
+    '12: bare command rejected in safe mode'
+  );
+
+  // 13. Safe mode: shell metacharacters are rejected regardless of allowUnsafeCommands
+  await assert.rejects(
+    () => executeCommand({ command: '/usr/bin/node; malicious', args: [], allowUnsafeCommands: true }),
+    /shell metacharacters/,
+    '13: shell metacharacters rejected'
+  );
+
+  // 14. validateCommandSecurity: inline API matches executeCommand behaviour
+  assert.throws(
+    () => validateCommandSecurity('node', false),
+    /must be an absolute path/,
+    '14: validateCommandSecurity rejects bare name in safe mode'
+  );
+  assert.doesNotThrow(
+    () => validateCommandSecurity('node', true),
+    '14: validateCommandSecurity allows bare name in unsafe mode'
+  );
+  assert.throws(
+    () => validateCommandSecurity('/usr/bin/node; rm -rf /', false),
+    /shell metacharacters/,
+    '14: validateCommandSecurity rejects metacharacters'
+  );
+
+  // 15. Unsafe mode: bare command name is allowed (we use NODE so it actually resolves)
+  r = await executeCommand({ command: NODE, args: [MOCK, '--status', '200'], allowUnsafeCommands: true });
+  assert.strictEqual(r.status, 200, '15: absolute path also works in unsafe mode');
 
   console.log('command-runner.test.js: all assertions passed');
 }
