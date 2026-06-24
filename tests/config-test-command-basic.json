@@ -1,0 +1,16 @@
+{
+  "nodes": [
+    {
+      "id": "run-client",
+      "name": "Run mock client",
+      "type": "command",
+      "command": "node",
+      "args": ["tests/fixtures/mock-client.js", "--status", "200", "--answer", "hello"],
+      "validations": [
+        { "httpStatusCode": 200 },
+        { "jsonpath": ".json.answer", "equals": "hello" },
+        { "jsonpath": ".exitCode", "equals": 0 }
+      ]
+    }
+  ]
+}

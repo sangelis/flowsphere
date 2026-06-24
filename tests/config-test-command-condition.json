@@ -1,0 +1,21 @@
+{
+  "nodes": [
+    {
+      "id": "probe",
+      "name": "Probe premium flag",
+      "type": "command",
+      "command": "node",
+      "args": ["tests/fixtures/mock-client.js", "--stdout", "{\"status\":200,\"premium\":true}"]
+    },
+    {
+      "id": "premium-only",
+      "name": "Runs only when probe.premium == true",
+      "type": "command",
+      "command": "node",
+      "args": ["tests/fixtures/mock-client.js", "--status", "200"],
+      "conditions": [
+        { "node": "probe", "field": ".json.premium", "equals": "true" }
+      ]
+    }
+  ]
+}

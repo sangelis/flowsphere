@@ -1,0 +1,35 @@
+{
+  "variables": {
+    "answerText": "FlowSphere"
+  },
+  "defaults": {
+    "validations": [
+      { "httpStatusCode": 200 }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "run-client",
+      "name": "Run a local client and map its result onto the response model",
+      "type": "command",
+      "command": "node",
+      "args": ["tests/fixtures/mock-client.js", "--status", "200", "--answer", "{{ .vars.answerText }}"],
+      "env": { "EXAMPLE_TOKEN": "{{ .vars.answerText }}-secret" },
+      "statusFrom": ".status",
+      "validations": [
+        { "jsonpath": ".json.answer", "equals": "FlowSphere" },
+        { "jsonpath": ".exitCode", "equals": 0 }
+      ]
+    },
+    {
+      "id": "use-answer",
+      "name": "Feed the previous command's parsed output into another command",
+      "type": "command",
+      "command": "node",
+      "args": ["tests/fixtures/mock-client.js", "--status", "200", "--answer", "got:{{ .responses.run-client.json.answer }}"],
+      "validations": [
+        { "jsonpath": ".json.answer", "equals": "got:FlowSphere" }
+      ]
+    }
+  ]
+}

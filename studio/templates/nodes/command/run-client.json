@@ -1,0 +1,23 @@
+{
+  "templateName": "Run client script",
+  "description": "Run a local client (e.g. a Python SDK client) and map its result onto the response model",
+  "category": "command",
+  "requiredVariables": ["prompt", "azureKey", "azureEndpoint"],
+  "nodes": [
+    {
+      "id": "run-client",
+      "name": "Run client script",
+      "type": "command",
+      "command": "python",
+      "args": ["client.py", "--prompt", "{{ .vars.prompt }}", "--json"],
+      "cwd": "./clients",
+      "env": { "AZURE_OPENAI_API_KEY": "{{ .vars.azureKey }}", "AZURE_OPENAI_ENDPOINT": "{{ .vars.azureEndpoint }}" },
+      "statusFrom": ".status",
+      "validations": [
+        { "httpStatusCode": 200 },
+        { "jsonpath": ".json.answer", "exists": true },
+        { "jsonpath": ".exitCode", "equals": 0 }
+      ]
+    }
+  ]
+}
