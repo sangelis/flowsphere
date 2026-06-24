@@ -24,9 +24,11 @@ res = validateConfig({ nodes: [{ id: 'c', type: 'command', command: 'python', st
 assert.ok(fields(res).includes('nodes[0].statusFrom'), 'bad statusFrom flagged');
 
 // HTTP fields rejected on a command node
-res = validateConfig({ nodes: [{ id: 'c', type: 'command', command: 'python', method: 'GET', url: '/x' }] });
+res = validateConfig({ nodes: [{ id: 'c', type: 'command', command: 'python', method: 'GET', url: '/x', headers: { a: 'b' }, body: { k: 'v' } }] });
 assert.ok(fields(res).includes('nodes[0].method'), 'method rejected on command node');
 assert.ok(fields(res).includes('nodes[0].url'), 'url rejected on command node');
+assert.ok(fields(res).includes('nodes[0].headers'), 'headers rejected on command node');
+assert.ok(fields(res).includes('nodes[0].body'), 'body rejected on command node');
 
 // invalid type
 res = validateConfig({ nodes: [{ id: 'c', type: 'grpc', command: 'x' }] });

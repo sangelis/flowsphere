@@ -349,7 +349,7 @@ async function launchStudio(port = 3737) {
       console.log(`[Server] Executing single step ${stepIndex + 1}`);
 
       // Import required executor modules
-      const { readJSONFile, mergeWithDefaults, promptUserInput, executeStep, buildRequestLog, maskSubstitutions } = require('../lib/executor');
+      const { readJSONFile, mergeWithDefaults, promptUserInput, executeStep, describeStep, buildRequestLog, maskSubstitutions } = require('../lib/executor');
       const { validateResponse } = require('../lib/validator');
       const { evaluateConditions } = require('../lib/conditions');
 
@@ -388,7 +388,7 @@ async function launchStudio(port = 3737) {
               stepIndex: stepIndex,
               step: stepNum,
               id: id,
-              name: name || `${method} ${url}`,
+              name: name || describeStep(node),
               prompts: node.userPrompts
             });
           }
@@ -429,7 +429,7 @@ async function launchStudio(port = 3737) {
         let requestDetails = null;
         let startTime = Date.now();
 
-        console.log(`[Server] Executing step ${stepNum}: ${method} ${url}`);
+        console.log(`[Server] Executing step ${stepNum}: ${describeStep(node)}`);
 
         try {
           const result = await executeStep(node, context);
@@ -621,7 +621,7 @@ async function launchStudio(port = 3737) {
 
       try {
         // Import required executor modules
-        const { readJSONFile, mergeWithDefaults, promptUserInput, executeStep, buildRequestLog, maskSubstitutions } = require('../lib/executor');
+        const { readJSONFile, mergeWithDefaults, promptUserInput, executeStep, describeStep, buildRequestLog, maskSubstitutions } = require('../lib/executor');
         const { validateResponse } = require('../lib/validator');
         const { evaluateConditions } = require('../lib/conditions');
 
@@ -683,7 +683,7 @@ async function launchStudio(port = 3737) {
               executionId,
               stepIndex: i,
               step: stepNum,
-              name: node.name || `${method} ${url}`,
+              name: node.name || describeStep(node),
               prompts: node.userPrompts
             });
 
@@ -746,7 +746,7 @@ async function launchStudio(port = 3737) {
             ...(node.type === 'command' ? { command: node.command, args: node.args } : {})
           });
 
-          console.log(`[Server] Executing step ${stepNum}: ${method} ${url}`);
+          console.log(`[Server] Executing step ${stepNum}: ${describeStep(node)}`);
 
           try {
             const result = await executeStep(node, context);
