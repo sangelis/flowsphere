@@ -29,35 +29,34 @@ const hasFlag = (name) => args.indexOf(name) !== -1;
 const exitCode = getFlag('--exit') !== undefined ? parseInt(getFlag('--exit'), 10) : 0;
 const stderrText = getFlag('--stderr');
 const sleepMs = getFlag('--sleep') !== undefined ? parseInt(getFlag('--sleep'), 10) : 0;
+const fs = require('fs');
 
 function emit() {
   if (stderrText) process.stderr.write(stderrText);
+  const writeAndExit = (output) => process.stdout.write(output, () => process.exit(exitCode));
 
   if (hasFlag('--flood')) {
     const block = 'x'.repeat(1024 * 1024); // 1 MB
-    for (let i = 0; i < 11; i++) process.stdout.write(block);
+    for (let i = 0; i < 11; i++) fs.writeSync(1, block);
     process.exit(exitCode);
     return;
   }
 
   const rawStdout = getFlag('--stdout');
   if (rawStdout !== undefined) {
-    process.stdout.write(rawStdout);
-    process.exit(exitCode);
+    writeAndExit(rawStdout);
     return;
   }
 
   const unicodeCount = getFlag('--unicode');
   if (unicodeCount !== undefined) {
     const answer = '😀漢字é'.repeat(parseInt(unicodeCount, 10));
-    process.stdout.write(JSON.stringify({ status: 200, answer }));
-    process.exit(exitCode);
+    writeAndExit(JSON.stringify({ status: 200, answer }));
     return;
   }
 
   if (hasFlag('--no-json')) {
-    process.stdout.write('plain text output, not json\n');
-    process.exit(exitCode);
+    writeAndExit('plain text output, not json\n');
     return;
   }
 
@@ -66,8 +65,7 @@ function emit() {
   if (getFlag('--answer') !== undefined) out.answer = getFlag('--answer');
   const echoEnv = getFlag('--echo-env');
   if (echoEnv !== undefined) out.env = { [echoEnv]: process.env[echoEnv] || null };
-  process.stdout.write(JSON.stringify(out));
-  process.exit(exitCode);
+  writeAndExit(JSON.stringify(out));
 }
 
 if (sleepMs > 0) setTimeout(emit, sleepMs);
