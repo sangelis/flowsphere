@@ -1,0 +1,22 @@
+{
+  "nodes": [
+    {
+      "id": "make-token",
+      "name": "Produce a token",
+      "type": "command",
+      "command": "node",
+      "args": ["tests/fixtures/mock-client.js", "--stdout", "{\"status\":200,\"token\":\"abc123\"}"]
+    },
+    {
+      "id": "use-token",
+      "name": "Consume the token from the previous step",
+      "type": "command",
+      "command": "node",
+      "args": ["tests/fixtures/mock-client.js", "--stdout", "{\"status\":200,\"received\":\"{{ .responses.make-token.json.token }}\"}"],
+      "validations": [
+        { "httpStatusCode": 200 },
+        { "jsonpath": ".json.received", "equals": "abc123" }
+      ]
+    }
+  ]
+}
