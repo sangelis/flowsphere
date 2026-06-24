@@ -539,9 +539,85 @@
      * @param {object} result - Execution result from API (null = executing state)
      * @returns {HTMLElement} The modal element
      */
+    function isCommandResult(result) {
+        return !!result && (result.type === 'command' || (result.request && result.request.type === 'command'));
+    }
+
+    // Request column markup, branching on command vs HTTP (shared by both result modals).
+    function renderTryItOutRequestColumn(result) {
+        const req = result.request || {};
+        const subs = result.substitutions;
+        if (isCommandResult(result)) {
+            const argsText = Array.isArray(req.args) ? req.args.join(' ') : '';
+            const hasEnv = req.env && typeof req.env === 'object' && Object.keys(req.env).length > 0;
+            return `
+                <div class="mb-2">
+                    <strong>cmd:</strong>
+                    <code>${highlightSubstitutionsInText(req.command || '', subs)}</code>
+                </div>
+
+                ${argsText ? `
+                    <div class="mb-2">
+                        <strong>Arguments</strong>
+                        <pre style="background: var(--bg-surface); color: var(--text-primary); border: 1px solid var(--border-color);" class="p-2 small">${highlightSubstitutionsInText(argsText, subs)}</pre>
+                    </div>
+                ` : ''}
+
+                ${req.cwd ? `
+                    <div class="mb-2">
+                        <strong>Working Directory</strong>
+                        <code>${highlightSubstitutionsInText(req.cwd, subs)}</code>
+                    </div>
+                ` : ''}
+
+                ${hasEnv ? `
+                    <details class="mb-2" open>
+                        <summary><strong>Environment</strong></summary>
+                        <pre style="background: var(--bg-surface); color: var(--text-primary); border: 1px solid var(--border-color);" class="p-2 small">${highlightSubstitutionsInJSON(req.env, subs)}</pre>
+                    </details>
+                ` : ''}
+            `;
+        }
+        return `
+            <div class="mb-2">
+                <strong>${req.method || ''}</strong>
+                <code>${highlightSubstitutionsInText(req.url || '', subs)}</code>
+            </div>
+
+            ${Object.keys(req.headers || {}).length > 0 ? `
+                <details class="mb-2" open>
+                    <summary><strong>Headers</strong></summary>
+                    <pre style="background: var(--bg-surface); color: var(--text-primary); border: 1px solid var(--border-color);" class="p-2 small">${highlightSubstitutionsInJSON(req.headers, subs)}</pre>
+                </details>
+            ` : ''}
+
+            ${req.body && Object.keys(req.body).length > 0 ? `
+                <details class="mb-2" open>
+                    <summary><strong>Body</strong></summary>
+                    <pre style="background: var(--bg-surface); color: var(--text-primary); border: 1px solid var(--border-color);" class="p-2 small">${highlightSubstitutionsInJSON(req.body, subs)}</pre>
+                </details>
+            ` : ''}
+        `;
+    }
+
+    // Response body markup, using rich command panels for command results (shared by both modals).
+    function renderTryItOutResponseBody(result) {
+        if (!result.response || !result.response.body) return '';
+        const body = result.response.body;
+        const isCmd = isCommandResult(result) || typeof body.exitCode !== 'undefined';
+        const inner = (isCmd && typeof renderCommandResultPanels === 'function')
+            ? renderCommandResultPanels(body)
+            : `<pre style="background: var(--bg-surface); color: var(--text-primary); border: 1px solid var(--border-color); max-height: 400px; overflow-y: auto;" class="p-2 small">${JSON.stringify(body, null, 2)}</pre>`;
+        return `
+            <details open>
+                <summary><strong>Response Body</strong></summary>
+                ${inner}
+            </details>
+        `;
+    }
+
     function showResultsModal(node, result) {
         const modalId = 'tryItOutResultsModal';
-
         // Remove existing modal if present
         const existingModal = document.getElementById(modalId);
         if (existingModal) {
@@ -565,19 +641,27 @@
                     <div class="spinner-border text-primary mb-3" role="status" style="width: 3rem; height: 3rem;">
                         <span class="visually-hidden">Loading...</span>
                     </div>
-                    <h5>${node.name || node.method + ' ' + node.url}</h5>
+                    <h5>${node.name || formatStepLabel(node)}</h5>
                     <p class="text-muted">Executing request...</p>
                 </div>
             `;
         } else {
             // Handle missing request object (error before execution)
             if (!result.request) {
-                result.request = {
-                    method: node.method || 'GET',
-                    url: node.url || '',
-                    headers: node.headers || {},
-                    body: node.body || {}
-                };
+                result.request = node.type === 'command'
+                    ? {
+                        type: 'command',
+                        command: node.command || '',
+                        args: Array.isArray(node.args) ? node.args : [],
+                        cwd: node.cwd || '',
+                        env: node.env || {}
+                    }
+                    : {
+                        method: node.method || 'GET',
+                        url: node.url || '',
+                        headers: node.headers || {},
+                        body: node.body || {}
+                    };
             }
 
             // Format validations (match Flow Runner styling)
@@ -621,30 +705,13 @@
             // Completed state - show request/response details
             modalBodyContent = `
                 <div class="alert alert-${result.success ? 'success' : 'danger'} mb-3">
-                    <strong>${node.name || node.method + ' ' + node.url}</strong>
+                    <strong>${node.name || formatStepLabel(node)}</strong>
                     <span class="ms-2">${statusIcon} ${statusText}</span>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <h6>Request</h6>
-                        <div class="mb-2">
-                            <strong>${result.request.method}</strong>
-                            <code>${highlightSubstitutionsInText(result.request.url, result.substitutions)}</code>
-                        </div>
-
-                        ${Object.keys(result.request.headers || {}).length > 0 ? `
-                            <details class="mb-2" open>
-                                <summary><strong>Headers</strong></summary>
-                                <pre style="background: var(--bg-surface); color: var(--text-primary); border: 1px solid var(--border-color);" class="p-2 small">${highlightSubstitutionsInJSON(result.request.headers, result.substitutions)}</pre>
-                            </details>
-                        ` : ''}
-
-                        ${result.request.body && Object.keys(result.request.body).length > 0 ? `
-                            <details class="mb-2" open>
-                                <summary><strong>Body</strong></summary>
-                                <pre style="background: var(--bg-surface); color: var(--text-primary); border: 1px solid var(--border-color);" class="p-2 small">${highlightSubstitutionsInJSON(result.request.body, result.substitutions)}</pre>
-                            </details>
-                        ` : ''}
+                        ${renderTryItOutRequestColumn(result)}
                     </div>
 
                     <div class="col-md-6">
@@ -667,12 +734,7 @@
 
                         ${validationsHtml}
 
-                        ${result.response && result.response.body ? `
-                            <details open>
-                                <summary><strong>Response Body</strong></summary>
-                                <pre style="background: var(--bg-surface); color: var(--text-primary); border: 1px solid var(--border-color); max-height: 400px; overflow-y: auto;" class="p-2 small">${JSON.stringify(result.response.body, null, 2)}</pre>
-                            </details>
-                        ` : ''}
+                        ${renderTryItOutResponseBody(result)}
                     </div>
                 </div>
             `;
@@ -824,12 +886,20 @@
 
         // Handle missing request object (error before execution)
         if (!result.request) {
-            result.request = {
-                method: node.method || 'GET',
-                url: node.url || '',
-                headers: node.headers || {},
-                body: node.body || {}
-            };
+            result.request = node.type === 'command'
+                ? {
+                    type: 'command',
+                    command: node.command || '',
+                    args: Array.isArray(node.args) ? node.args : [],
+                    cwd: node.cwd || '',
+                    env: node.env || {}
+                }
+                : {
+                    method: node.method || 'GET',
+                    url: node.url || '',
+                    headers: node.headers || {},
+                    body: node.body || {}
+                };
         }
 
         // Format validations (match Flow Runner styling)
@@ -884,30 +954,13 @@
         if (modalBody) {
             modalBody.innerHTML = `
                 <div class="alert alert-${result.success ? 'success' : 'danger'} mb-3">
-                    <strong>${node.name || node.method + ' ' + node.url}</strong>
+                    <strong>${node.name || formatStepLabel(node)}</strong>
                     <span class="ms-2">${statusIcon} ${statusText}</span>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <h6>Request</h6>
-                        <div class="mb-2">
-                            <strong>${result.request.method}</strong>
-                            <code>${highlightSubstitutionsInText(result.request.url, result.substitutions)}</code>
-                        </div>
-
-                        ${Object.keys(result.request.headers || {}).length > 0 ? `
-                            <details class="mb-2" open>
-                                <summary><strong>Headers</strong></summary>
-                                <pre style="background: var(--bg-surface); color: var(--text-primary); border: 1px solid var(--border-color);" class="p-2 small">${highlightSubstitutionsInJSON(result.request.headers, result.substitutions)}</pre>
-                            </details>
-                        ` : ''}
-
-                        ${result.request.body && Object.keys(result.request.body).length > 0 ? `
-                            <details class="mb-2" open>
-                                <summary><strong>Body</strong></summary>
-                                <pre style="background: var(--bg-surface); color: var(--text-primary); border: 1px solid var(--border-color);" class="p-2 small">${highlightSubstitutionsInJSON(result.request.body, result.substitutions)}</pre>
-                            </details>
-                        ` : ''}
+                        ${renderTryItOutRequestColumn(result)}
                     </div>
 
                     <div class="col-md-6">
@@ -930,12 +983,7 @@
 
                         ${validationsHtml}
 
-                        ${result.response && result.response.body ? `
-                            <details open>
-                                <summary><strong>Response Body</strong></summary>
-                                <pre style="background: var(--bg-surface); color: var(--text-primary); border: 1px solid var(--border-color); max-height: 400px; overflow-y: auto;" class="p-2 small">${JSON.stringify(result.response.body, null, 2)}</pre>
-                            </details>
-                        ` : ''}
+                        ${renderTryItOutResponseBody(result)}
                     </div>
                 </div>
             `;
@@ -1451,9 +1499,11 @@
         // Store schema by node ID
         config.responseSchemas[node.id] = {
             nodeId: node.id,
-            nodeName: node.name || node.method + ' ' + node.url,
-            method: node.method || 'GET',
-            url: node.url || '',
+            nodeName: node.name || (node.type === 'command' ? 'cmd: ' + (node.command || '') : (node.method || 'GET') + ' ' + (node.url || '')),
+            nodeType: node.type === 'command' ? 'command' : 'http',
+            ...(node.type === 'command'
+                ? { command: node.command || '' }
+                : { method: node.method || 'GET', url: node.url || '' }),
             schema: schema,
             timestamp: new Date().toISOString()
         };

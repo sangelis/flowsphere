@@ -406,22 +406,42 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="newNodeMethod" class="form-label">HTTP Method</label>
-                        <select class="form-select" id="newNodeMethod" onchange="updateNodePreview()">
-                            <option value="GET">GET</option>
-                            <option value="POST">POST</option>
-                            <option value="PUT">PUT</option>
-                            <option value="PATCH">PATCH</option>
-                            <option value="DELETE">DELETE</option>
+                        <label for="newNodeType" class="form-label">Node Type</label>
+                        <select class="form-select" id="newNodeType" onchange="toggleNewNodeType(this.value); updateNodePreview();">
+                            <option value="http">HTTP Request</option>
+                            <option value="command">Command (run a local process)</option>
                         </select>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="newNodeUrl" class="form-label">URL</label>
-                        <input type="text" class="form-control" id="newNodeUrl"
-                               placeholder="/api/users"
-                               oninput="updateNodePreview()">
-                        <div class="form-text">Enter the endpoint path (e.g., /api/users/login)</div>
+                    <div id="newNodeHttpGroup">
+                        <div class="mb-3">
+                            <label for="newNodeMethod" class="form-label">HTTP Method</label>
+                            <select class="form-select" id="newNodeMethod" onchange="updateNodePreview()">
+                                <option value="GET">GET</option>
+                                <option value="POST">POST</option>
+                                <option value="PUT">PUT</option>
+                                <option value="PATCH">PATCH</option>
+                                <option value="DELETE">DELETE</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="newNodeUrl" class="form-label">URL</label>
+                            <input type="text" class="form-control" id="newNodeUrl"
+                                   placeholder="/api/users"
+                                   oninput="updateNodePreview()">
+                            <div class="form-text">Enter the endpoint path (e.g., /api/users/login)</div>
+                        </div>
+                    </div>
+
+                    <div id="newNodeCommandGroup" style="display: none;">
+                        <div class="mb-3">
+                            <label for="newNodeCommand" class="form-label">Command</label>
+                            <input type="text" class="form-control" id="newNodeCommand"
+                                   placeholder="python  (or .venv/Scripts/python.exe)"
+                                   oninput="updateNodePreview()">
+                            <div class="form-text">Executable to run (no shell). You can add arguments and env vars after creating the node.</div>
+                        </div>
                     </div>
 
                     <div class="form-check mb-3">
@@ -759,6 +779,7 @@
     <script src="js/state.js"></script>
     <script src="js/templates.js"></script>
     <script src="js/bootstrap-modal-bridge.js"></script>
+    <script src="js/command-result-view.js"></script>
     <script src="js/ui-renderer-bootstrap.js"></script>
     <script src="js/form-handlers.js"></script>
     <script src="js/modals.js"></script>

@@ -104,14 +104,16 @@ const ImportNodesModal = {
       'auth': 'shield-lock',
       'user-input': 'person-circle',
       'validation': 'check-circle',
-      'conditional': 'shuffle'
+      'conditional': 'shuffle',
+      'command': 'terminal'
     };
 
     const categoryNames = {
       'auth': 'Authentication',
       'user-input': 'User Interaction',
       'validation': 'Validation Examples',
-      'conditional': 'Conditional Flow'
+      'conditional': 'Conditional Flow',
+      'command': 'Command'
     };
 
     let html = '';

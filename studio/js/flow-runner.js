@@ -890,7 +890,7 @@ async function runSequenceFullSpeed() {
                                         <div class="d-flex align-items-center gap-2 py-2 px-3 bg-secondary bg-opacity-10 border border-secondary rounded">
                                             <span class="badge bg-secondary bg-opacity-75 me-1">#${nextStepNumber}</span>
                                             <i class="bi bi-slash-circle text-muted"></i>
-                                            <span class="flex-grow-1 small text-truncate">${escapeHtml(nextNode.name || nextNode.url)}</span>
+                                            <span class="flex-grow-1 small text-truncate">${escapeHtml(nextNode.name || formatStepLabel(nextNode))}</span>
                                             <span class="text-muted small fw-semibold">Not Run</span>
                                         </div>
                                     </div>
@@ -1070,8 +1070,17 @@ function updateModalWithStep(stepData, currentStep, totalSteps) {
         `Status ${stepData.response.status} ${stepData.response.statusText || ''}` :
         stepData.status.toUpperCase();
 
-    // Display URL with substitution highlighting
-    const displayUrl = highlightSubstitutionsInText(stepData.url, stepData.substitutions);
+    // Display step label with substitution highlighting
+    const stepLabel = formatStepLabel(stepData);
+    const displayStepLabel = highlightSubstitutionsInText(stepLabel, stepData.substitutions);
+
+    const responseHtml = stepData.response ? (
+        (stepData.type === 'command' || (stepData.response.body && typeof stepData.response.body.exitCode !== 'undefined'))
+            ? (typeof renderCommandResultPanels === 'function'
+                ? renderCommandResultPanels(stepData.response.body)
+                : `<pre class="json-preview-code m-0 p-2 small" style="max-height: 400px; overflow-y: auto;">${escapeHtml(JSON.stringify(stepData.response.body, null, 2))}</pre>`)
+            : `<pre class="json-preview-code m-0 p-2 small" style="max-height: 400px; overflow-y: auto;">${escapeHtml(JSON.stringify(stepData.response.body, null, 2))}</pre>`
+    ) : '';
 
     // Build validation lines (one per validation, like CLI)
     let validationLines = '';
@@ -1122,8 +1131,7 @@ function updateModalWithStep(stepData, currentStep, totalSteps) {
                  ` : ''}>
                 <span class="badge bg-secondary bg-opacity-75 me-1">#${currentStep}</span>
                 <span>${statusIcon}</span>
-                <span class="text-muted small">${stepData.method}</span>
-                <span class="flex-grow-1 small text-truncate" title="${escapeHtml(stepData.url)}">${displayUrl}</span>
+                <span class="flex-grow-1 small text-truncate" title="${escapeHtml(stepLabel)}">${displayStepLabel}</span>
                 <span class="text-${statusClass} small fw-semibold">${statusText}</span>
                 <span class="text-muted small">(${stepData.duration ? stepData.duration + 's' : '-'})</span>
                 ${hasDetails ? `
@@ -1163,7 +1171,7 @@ function updateModalWithStep(stepData, currentStep, totalSteps) {
                                     <div id="response${currentStep}" class="accordion-collapse collapse"
                                          data-bs-parent="#stepAccordion${currentStep}">
                                         <div class="accordion-body p-0">
-                                            <pre class="json-preview-code m-0 p-2 small" style="max-height: 400px; overflow-y: auto;">${escapeHtml(JSON.stringify(stepData.response.body, null, 2))}</pre>
+                                            ${responseHtml}
                                         </div>
                                     </div>
                                 </div>
@@ -1203,6 +1211,8 @@ function showStepPlaceholder(stepData, currentStep, totalSteps) {
     const container = document.getElementById('flowStepsContainer');
     if (!container) return;
 
+    const stepLabel = formatStepLabel(stepData);
+
     const placeholderHtml = `
         <div class="step-card-animated mb-2" id="step-${currentStep}">
             <div class="d-flex align-items-center gap-2 py-2 px-3 bg-info bg-opacity-10 border border-info rounded">
@@ -1210,8 +1220,7 @@ function showStepPlaceholder(stepData, currentStep, totalSteps) {
                 <div class="spinner-border spinner-border-sm text-info" role="status">
                     <span class="visually-hidden">Executing...</span>
                 </div>
-                <span class="text-muted small">${stepData.method}</span>
-                <span class="flex-grow-1 small text-truncate" title="${escapeHtml(stepData.url)}">${escapeHtml(stepData.url)}</span>
+                <span class="flex-grow-1 small text-truncate" title="${escapeHtml(stepLabel)}">${escapeHtml(stepLabel)}</span>
                 <span class="text-info small fw-semibold">Executing...</span>
             </div>
         </div>
@@ -1250,8 +1259,17 @@ function replaceStepPlaceholder(stepData, stepNumber, totalSteps) {
         `Status ${stepData.response.status} ${stepData.response.statusText || ''}` :
         stepData.status.toUpperCase();
 
-    // Display URL with substitution highlighting
-    const displayUrl = highlightSubstitutionsInText(stepData.url, stepData.substitutions);
+    // Display step label with substitution highlighting
+    const stepLabel = formatStepLabel(stepData);
+    const displayStepLabel = highlightSubstitutionsInText(stepLabel, stepData.substitutions);
+
+    const responseHtml = stepData.response ? (
+        (stepData.type === 'command' || (stepData.response.body && typeof stepData.response.body.exitCode !== 'undefined'))
+            ? (typeof renderCommandResultPanels === 'function'
+                ? renderCommandResultPanels(stepData.response.body)
+                : `<pre class="json-preview-code m-0 p-2 small" style="max-height: 400px; overflow-y: auto;">${escapeHtml(JSON.stringify(stepData.response.body, null, 2))}</pre>`)
+            : `<pre class="json-preview-code m-0 p-2 small" style="max-height: 400px; overflow-y: auto;">${escapeHtml(JSON.stringify(stepData.response.body, null, 2))}</pre>`
+    ) : '';
 
     // Build validation lines
     let validationLines = '';
@@ -1299,8 +1317,7 @@ function replaceStepPlaceholder(stepData, stepNumber, totalSteps) {
              ` : ''}>
             <span class="badge bg-secondary bg-opacity-75 me-1">#${stepNumber}</span>
             <span>${statusIcon}</span>
-            <span class="text-muted small">${stepData.method}</span>
-            <span class="flex-grow-1 small text-truncate" title="${escapeHtml(stepData.url)}">${displayUrl}</span>
+            <span class="flex-grow-1 small text-truncate" title="${escapeHtml(stepLabel)}">${displayStepLabel}</span>
             <span class="text-${statusClass} small fw-semibold">${statusText}</span>
             <span class="text-muted small">(${stepData.duration ? stepData.duration + 's' : '-'})</span>
             ${hasDetails ? `
@@ -1340,7 +1357,7 @@ function replaceStepPlaceholder(stepData, stepNumber, totalSteps) {
                                 <div id="response${stepNumber}" class="accordion-collapse collapse"
                                      data-bs-parent="#stepAccordion${stepNumber}">
                                     <div class="accordion-body p-0">
-                                        <pre class="json-preview-code m-0 p-2 small" style="max-height: 400px; overflow-y: auto;">${escapeHtml(JSON.stringify(stepData.response.body, null, 2))}</pre>
+                                        ${responseHtml}
                                     </div>
                                 </div>
                             </div>
@@ -1580,16 +1597,24 @@ function displayExecutionResults(result) {
                               log.status === 'skipped' ? 'warning' : 'danger';
             const statusIcon = log.status === 'completed' ? '✅' :
                              log.status === 'skipped' ? '⊘' : '❌';
+            const stepLabel = formatStepLabel(log);
+            const responseHtml = log.response ? (
+                (log.type === 'command' || (log.response.body && typeof log.response.body.exitCode !== 'undefined'))
+                    ? (typeof renderCommandResultPanels === 'function'
+                        ? renderCommandResultPanels(log.response.body)
+                        : `<pre class="json-preview-code m-0 p-3 small" style="max-height: 400px; overflow-y: auto;">${JSON.stringify(log.response.body, null, 2)}</pre>`)
+                    : `<pre class="json-preview-code m-0 p-3 small" style="max-height: 400px; overflow-y: auto;">${JSON.stringify(log.response.body, null, 2)}</pre>`
+            ) : '';
 
             html += `
                 <div class="card mb-2">
                     <div class="card-header bg-${statusClass} bg-opacity-10 border-${statusClass}">
                         <div class="d-flex justify-content-between align-items-center">
-                            <strong>${statusIcon} ${log.name ? escapeHtml(log.name) : `${log.method} ${escapeHtml(log.url)}`}</strong>
+                            <strong>${statusIcon} ${log.name ? escapeHtml(log.name) : escapeHtml(stepLabel)}</strong>
                             <small class="text-muted">${log.duration}s</small>
                         </div>
                         ${log.name ? `<div class="small text-muted mt-1">
-                            ${log.method} ${escapeHtml(log.url)}
+                            ${escapeHtml(stepLabel)}
                         </div>` : ''}
                     </div>
                     <div class="card-body">
@@ -1629,7 +1654,7 @@ function displayExecutionResults(result) {
                         <div id="response${index}" class="accordion-collapse collapse show"
                              data-bs-parent="#stepAccordion${index}">
                             <div class="accordion-body p-0">
-                                <pre class="json-preview-code m-0 p-3 small" style="max-height: 400px; overflow-y: auto;">${JSON.stringify(log.response.body, null, 2)}</pre>
+                                ${responseHtml}
                             </div>
                         </div>
                     </div>
@@ -2849,7 +2874,7 @@ function showContinueButton(currentStep, nextNode) {
     // Update next step preview
     const nextStepNameEl = document.getElementById('nextStepName');
     if (nextStepNameEl && nextNode) {
-        nextStepNameEl.textContent = nextNode.name || `${nextNode.method} ${nextNode.url}`;
+        nextStepNameEl.textContent = nextNode.name || formatStepLabel(nextNode);
     }
 
     // Show Continue button and preview
@@ -3283,7 +3308,7 @@ function showCountdownButton(currentStep, nextNode, delay) {
     // Update next step preview and countdown
     const nextStepNameEl = document.getElementById('nextStepName');
     if (nextStepNameEl && nextNode) {
-        nextStepNameEl.textContent = nextNode.name || `${nextNode.method} ${nextNode.url}`;
+        nextStepNameEl.textContent = nextNode.name || formatStepLabel(nextNode);
     }
 
     const countdownEl = document.getElementById('countdownTimer');

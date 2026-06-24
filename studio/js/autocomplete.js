@@ -252,6 +252,45 @@ function getTypeDisplayInfo(fieldSchema) {
     }
 }
 
+/**
+ * Build fixed field suggestions for command node responses
+ * @param {string} nodeId - The node ID
+ * @param {array} fieldPath - Path segments after nodeId
+ * @param {string} partialText - Full partial text being typed
+ * @returns {array} Array of command output suggestions with types
+ */
+function buildCommandResponseFieldSuggestions(nodeId, fieldPath, partialText) {
+    const suggestions = [];
+
+    // Only show fixed command outputs at the command response root
+    if (fieldPath.length > 1) return suggestions;
+
+    const commandOutputs = [
+        { name: 'exitCode', type: 'number' },
+        { name: 'stdout', type: 'string' },
+        { name: 'stderr', type: 'string' },
+        { name: 'json', type: 'object' }
+    ];
+
+    for (const output of commandOutputs) {
+        const fullPath = ` .responses.${nodeId}.${output.name}`;
+
+        if (fullPath.toLowerCase().includes(partialText.toLowerCase()) || partialText.endsWith('.')) {
+            const typeInfo = getTypeDisplayInfo({ type: output.type });
+            suggestions.push({
+                text: fullPath,
+                display: output.name,
+                hint: typeInfo.hint,
+                category: 'Response Fields',
+                type: output.type,
+                typeColor: typeInfo.color
+            });
+        }
+    }
+
+    return suggestions;
+}
+
 function buildAutocompleteSuggestions(partialText, stepIndex) {
     const suggestions = [];
 
@@ -401,17 +440,44 @@ function buildAutocompleteSuggestions(partialText, stepIndex) {
         }
     }
 
-    // Category: Response Fields (from stored schemas)
-    // Check if user is typing .responses.nodeId. and we have a schema for it
-    if (config.responseSchemas && partialText.startsWith('.responses.')) {
+    // Category: Response Fields (from stored schemas or command node outputs)
+    // Check if user is typing .responses.nodeId.
+    if (partialText.startsWith('.responses.')) {
         const afterResponses = partialText.substring('.responses.'.length);
         const parts = afterResponses.split('.');
 
         if (parts.length >= 1) {
             const nodeId = parts[0];
-            const schema = config.responseSchemas[nodeId];
+            const schema = config.responseSchemas?.[nodeId];
+            const node = config.nodes?.find(n => n.id === nodeId);
+            const isCommandNode = node?.type === 'command' || schema?.nodeType === 'command';
 
-            if (schema && schema.schema) {
+            if (isCommandNode) {
+                const fieldPath = parts.slice(1); // Remaining path after nodeId
+                const fieldSuggestions = buildCommandResponseFieldSuggestions(
+                    nodeId,
+                    fieldPath,
+                    partialText
+                );
+                const jsonSchema = schema?.schema?.properties?.json;
+
+                if (fieldPath[0] === 'json' && jsonSchema) {
+                    fieldSuggestions.push(...buildSchemaFieldSuggestions(
+                        jsonSchema,
+                        `${nodeId}.json`,
+                        fieldPath.slice(1),
+                        partialText
+                    ));
+                }
+
+                if (fieldSuggestions.length > 0) {
+                    const categoryName = fieldPath.length > 0
+                        ? `Fields in ${nodeId}.${fieldPath.join('.')}`
+                        : `Fields in ${nodeId} response`;
+                    suggestions.push({ isCategory: true, name: categoryName });
+                    suggestions.push(...fieldSuggestions);
+                }
+            } else if (schema && schema.schema) {
                 const fieldPath = parts.slice(1); // Remaining path after nodeId
                 const fieldSuggestions = buildSchemaFieldSuggestions(
                     schema.schema,

@@ -10,7 +10,8 @@ const tests = [
   'executor-dispatch.test.js',
   'executor-command.test.js',
   'config-validator-command.test.js',
-  'runsequence-command.test.js'
+  'runsequence-command.test.js',
+  'formatStepLabel.test.js'
 ];
 
 let failed = 0;

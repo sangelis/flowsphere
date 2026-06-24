@@ -24,6 +24,24 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
+// Escape a value for safe use inside a double-quoted HTML attribute.
+function escapeAttr(text) {
+    if (text === null || text === undefined) return '';
+    return String(text)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+}
+
+// Escape a value for safe use inside a single-quoted JS string in an inline handler.
+function escapeJsString(text) {
+    if (text === null || text === undefined) return '';
+    return String(text)
+        .replace(/\\/g, '\\\\')
+        .replace(/'/g, "\\'");
+}
+
 function renderEditor() {
     if (!config) return;
 
@@ -316,6 +334,7 @@ function renderResponseSchemas() {
             </button>
         </div>
         ${Object.entries(schemas).map(([nodeId, schemaData]) => {
+            const isCommandSchema = schemaData.nodeType === 'command';
             const methodBadgeClass = {
                 'GET': 'bg-info text-dark',
                 'POST': 'bg-success',
@@ -323,6 +342,12 @@ function renderResponseSchemas() {
                 'DELETE': 'bg-danger',
                 'PATCH': 'bg-primary'
             }[schemaData.method] || 'bg-secondary';
+
+            const summaryHtml = isCommandSchema
+                ? `<span class="badge bg-secondary">CMD</span>
+                   <code class="ms-1">${schemaData.command || ''}</code>`
+                : `<span class="badge ${methodBadgeClass}">${schemaData.method || 'GET'}</span>
+                   <code class="ms-1">${schemaData.url || ''}</code>`;
 
             return `
             <div class="card mb-2">
@@ -332,8 +357,7 @@ function renderResponseSchemas() {
                         <small class="text-muted ms-2">[${nodeId}]</small>
                         <br>
                         <small>
-                            <span class="badge ${methodBadgeClass}">${schemaData.method || 'GET'}</span>
-                            <code class="ms-1">${schemaData.url || ''}</code>
+                            ${summaryHtml}
                         </small>
                     </div>
                     <button class="btn btn-sm btn-outline-danger" onclick="deleteSchema('${nodeId.replace(/'/g, "\\'")}')">
@@ -439,7 +463,7 @@ function renderSteps() {
             const showDragHandle = steps.length > 1 && isDragDropEnabled;
             const isDraggable = showDragHandle && !isOpen; // Only collapsed steps can be dragged
             return `
-            <div class="accordion-item mb-3 step-method-${(step.method || 'GET').toLowerCase()}"
+            <div class="accordion-item mb-3 step-method-${step.type === 'command' ? 'cmd' : (step.method || 'GET').toLowerCase()}"
                  draggable="${isDraggable}"
                  data-step-index="${index}"
                  ${!isDraggable && showDragHandle ? 'data-drag-disabled="true"' : ''}>
@@ -449,7 +473,9 @@ function renderSteps() {
                         <span class="fw-medium">
                             ${index + 1}. ${step.name || 'Unnamed Node'}
                             ${step.id ? `<span class="text-muted small">[${step.id}]</span>` : ''}
-                            <span class="badge ${getMethodBadgeClass(step.method)} ms-2">${step.method || 'GET'}</span>
+                            ${step.type === 'command'
+                                ? `<span class="badge bg-secondary ms-2">CMD</span>`
+                                : `<span class="badge ${getMethodBadgeClass(step.method)} ms-2">${step.method || 'GET'}</span>`}
                         </span>
                     </button>
                     <div class="d-flex gap-1 px-2">
@@ -767,6 +793,7 @@ function getMethodBadgeClass(method) {
 }
 
 function renderStepForm(step, index) {
+    const nodeType = step.type === 'command' ? 'command' : 'http';
     return `
         <!-- Node Actions Toolbar -->
         <div class="d-flex gap-2 mb-3">
@@ -801,6 +828,23 @@ function renderStepForm(step, index) {
                 </div>
             </div>
 
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Node Type</label>
+                    <select class="form-select form-select-sm" onchange="updateStep(${index}, 'type', this.value)">
+                        <option value="http" ${nodeType === 'http' ? 'selected' : ''}>HTTP Request</option>
+                        <option value="command" ${nodeType === 'command' ? 'selected' : ''}>Command (run a local process)</option>
+                    </select>
+                    <div class="form-text">HTTP sends a request; Command runs a local process and maps its result onto the response model.</div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Timeout (seconds)</label>
+                    <input type="number" class="form-control form-control-sm" value="${step.timeout || ''}"
+                           onchange="updateStep(${index}, 'timeout', this.value ? parseInt(this.value) : undefined)"
+                           placeholder="Default: ${config.defaults?.timeout || 30}">
+                </div>
+            </div>
+
             ${index > 0 ? `
             <div class="mb-3">
                 <label class="form-label">Conditions</label>
@@ -827,11 +871,12 @@ function renderStepForm(step, index) {
         </div>
 
         <!-- Request Details -->
+        ${nodeType === 'http' ? `
         <div class="border-bottom pb-3 mb-3">
             <h6 class="text-uppercase fw-semibold small text-secondary mb-3">Request Details</h6>
 
             <div class="row g-3 mb-3">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <label class="form-label">HTTP Method</label>
                     <select class="form-select form-select-sm" id="methodSelect_${index}" onchange="toggleBodyVisibility(${index}, this.value); updateStepAsync(${index}, 'method', this.value);">
                         <option value="GET" ${step.method === 'GET' ? 'selected' : ''}>GET</option>
@@ -841,17 +886,11 @@ function renderStepForm(step, index) {
                         <option value="PATCH" ${step.method === 'PATCH' ? 'selected' : ''}>PATCH</option>
                     </select>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <label class="form-label">URL</label>
                     <input type="text" class="form-control form-control-sm" value="${step.url || ''}"
                            onchange="updateStep(${index}, 'url', this.value)" placeholder="/api/endpoint or full URL">
                     <div class="form-text">Use {{ .responses.stepId.field }} or {{ .input.var }}</div>
-                </div>
-                <div class="col-md-4">
-                    <label class="form-label">Timeout (seconds)</label>
-                    <input type="number" class="form-control form-control-sm" value="${step.timeout || ''}"
-                           onchange="updateStep(${index}, 'timeout', this.value ? parseInt(this.value) : undefined)"
-                           placeholder="Default: ${config.defaults?.timeout || 30}">
                 </div>
             </div>
 
@@ -892,6 +931,7 @@ function renderStepForm(step, index) {
                 <div class="form-text">Format auto-detected from Content-Type header. Use flat object for form-urlencoded, nested for JSON.</div>
             </div>
         </div>
+        ` : `${renderCommandFields(step, index)}`}
 
         <!-- Response Handling -->
         <div>
@@ -931,6 +971,74 @@ function renderStepForm(step, index) {
                 <div class="form-text">
                     ${step.skipDefaultValidations === true ? 'Skip mode: Only node validations will be performed' : 'Merge mode: Node validations are concatenated with defaults'}
                 </div>
+            </div>
+        </div>
+    `;
+}
+
+function renderCommandFields(step, index) {
+    const args = Array.isArray(step.args) ? step.args : [];
+    const env = (step.env && typeof step.env === 'object') ? step.env : {};
+    const argsHtml = args.map((a, i) => `
+        <div class="input-group input-group-sm mb-2" data-arg-row="${i}">
+            <input type="text" class="form-control" value="${escapeAttr(a)}"
+                   onchange="updateStepArg(${index}, ${i}, this.value)" placeholder="argument">
+            <button class="btn btn-outline-danger" type="button" onclick="removeStepArg(${index}, ${i})" title="Remove">
+                <i class="bi bi-x"></i>
+            </button>
+        </div>
+    `).join('');
+    const envHtml = Object.entries(env).map(([k, v], i) => `
+        <div class="input-group input-group-sm mb-2" data-env-row="${i}">
+            <input type="text" class="form-control" value="${escapeAttr(k)}"
+                   onchange="updateStepEnvKey(${index}, '${escapeAttr(escapeJsString(k))}', this.value)" placeholder="VAR_NAME" style="max-width: 40%;">
+            <span class="input-group-text">=</span>
+            <input type="text" class="form-control" value="${escapeAttr(v)}"
+                   onchange="updateStepEnvValue(${index}, '${escapeAttr(escapeJsString(k))}', this.value)" placeholder="value">
+            <button class="btn btn-outline-danger" type="button" onclick="removeStepEnv(${index}, '${escapeAttr(escapeJsString(k))}')" title="Remove">
+                <i class="bi bi-x"></i>
+            </button>
+        </div>
+    `).join('');
+
+    return `
+        <!-- Command Details -->
+        <div class="border-bottom pb-3 mb-3">
+            <h6 class="text-uppercase fw-semibold small text-secondary mb-3">Command Details</h6>
+            <div class="mb-3">
+                <label class="form-label">Command</label>
+                <input type="text" class="form-control form-control-sm" value="${escapeAttr(step.command || '')}"
+                       onchange="updateStep(${index}, 'command', this.value)" placeholder="python  (or .venv/Scripts/python.exe)">
+                <div class="form-text">Executable to run (no shell). Use Arguments for flags/values.</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Arguments</label>
+                <div id="argsList_${index}">${argsHtml}</div>
+                <button class="btn btn-outline-secondary btn-sm mt-1" onclick="addStepArg(${index})">
+                    <i class="bi bi-plus"></i> Add Argument
+                </button>
+                <div class="form-text">Each argument is passed separately. Supports {{ .vars.x }}, {{ .responses.id.json.field }}, {{ $guid }}.</div>
+            </div>
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Working Directory (cwd)</label>
+                    <input type="text" class="form-control form-control-sm" value="${escapeAttr(step.cwd || '')}"
+                           onchange="updateStep(${index}, 'cwd', this.value)" placeholder="relative to launch dir, or absolute">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Status From (jsonpath)</label>
+                    <input type="text" class="form-control form-control-sm" value="${escapeAttr(step.statusFrom || '')}"
+                           onchange="updateStep(${index}, 'statusFrom', this.value)" placeholder=".status">
+                    <div class="form-text">Reads the reported HTTP status from parsed stdout JSON.</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Environment Variables</label>
+                <div id="envList_${index}">${envHtml}</div>
+                <button class="btn btn-outline-secondary btn-sm mt-1" onclick="addStepEnv(${index})">
+                    <i class="bi bi-plus"></i> Add Variable
+                </button>
+                <div class="form-text">Layered over the inherited environment. Values are masked in execution logs.</div>
             </div>
         </div>
     `;

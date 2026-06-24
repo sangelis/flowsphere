@@ -404,8 +404,10 @@ async function launchStudio(port = 3737) {
             step: stepNum,
             id,
             name,
+            type: node.type || 'http',
             method,
             url,
+            request: buildRequestLog({ ...node, type: node.type || 'http' }),
             status: 'skipped',
             skipReason
           };
@@ -659,8 +661,10 @@ async function launchStudio(port = 3737) {
               step: stepNum,
               id,
               name,
+              type: node.type || 'http',
               method,
               url,
+              request: buildRequestLog({ ...node, type: node.type || 'http' }),
               status: 'skipped',
               skipReason
             };
@@ -709,8 +713,10 @@ async function launchStudio(port = 3737) {
               step: stepNum,
               id,
               name,
+              type: node.type || 'http',
               method,
               url,
+              request: buildRequestLog({ ...node, type: node.type || 'http' }),
               status: 'skipped',
               skipReason
             };
@@ -734,8 +740,10 @@ async function launchStudio(port = 3737) {
             step: stepNum,
             id,
             name,
+            type: node.type || 'http',
             method,
-            url
+            url,
+            ...(node.type === 'command' ? { command: node.command, args: node.args } : {})
           });
 
           console.log(`[Server] Executing step ${stepNum}: ${method} ${url}`);

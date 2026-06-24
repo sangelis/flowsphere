@@ -118,20 +118,30 @@ function addStep(hint = null, skipModal = false, nodeDetails = null) {
     }
 
     // Create new step with provided details or defaults
-    const newStep = nodeDetails ? {
-        name: nodeDetails.name,
-        id: nodeDetails.id,
-        method: nodeDetails.method,
-        url: nodeDetails.url,
-        headers: {},
-        body: {}
-    } : {
-        name: "New Node",
-        method: "GET",
-        url: "",
-        headers: {},
-        body: {}
-    };
+    const newStep = nodeDetails
+        ? (nodeDetails.type === 'command'
+            ? {
+                name: nodeDetails.name,
+                id: nodeDetails.id,
+                type: 'command',
+                command: nodeDetails.command || '',
+                args: nodeDetails.args || []
+              }
+            : {
+                name: nodeDetails.name,
+                id: nodeDetails.id,
+                method: nodeDetails.method,
+                url: nodeDetails.url,
+                headers: {},
+                body: {}
+              })
+        : {
+            name: "New Node",
+            method: "GET",
+            url: "",
+            headers: {},
+            body: {}
+        };
 
     // Insert step at position
     config.nodes.splice(insertIndex, 0, newStep);
@@ -171,6 +181,11 @@ function showAddNewNodeModal(hint = 'bottom') {
     // Reset form
     document.getElementById('newNodeMethod').value = 'GET';
     document.getElementById('newNodeUrl').value = '';
+    const typeSelect = document.getElementById('newNodeType');
+    if (typeSelect) typeSelect.value = 'http';
+    const commandInput = document.getElementById('newNodeCommand');
+    if (commandInput) commandInput.value = '';
+    toggleNewNodeType('http');
     document.getElementById('autoGenerateNodeDetails').checked = true;
     document.getElementById('nodePreview').style.display = 'none';
 
@@ -199,7 +214,7 @@ function showAddNewNodeModal(hint = 'bottom') {
         positionSection.style.display = 'none';
     }
 
-    const bsModal = new bootstrap.Modal(modal);
+    const bsModal = new bootstrap.Modal(modal, { backdrop: 'static', keyboard: false });
     bsModal.show();
 
     // Focus on URL input
@@ -213,6 +228,20 @@ function updateNodePreview() {
     const url = document.getElementById('newNodeUrl').value.trim();
     const autoGenerate = document.getElementById('autoGenerateNodeDetails').checked;
     const preview = document.getElementById('nodePreview');
+    const nodeType = document.getElementById('newNodeType')?.value || 'http';
+
+    if (nodeType === 'command') {
+        const command = document.getElementById('newNodeCommand').value.trim();
+        if (!command || !autoGenerate) {
+            preview.style.display = 'none';
+            return;
+        }
+        const generated = generateCommandNodeDetails(command);
+        document.getElementById('previewId').textContent = generated.id;
+        document.getElementById('previewName').textContent = generated.name;
+        preview.style.display = 'block';
+        return;
+    }
 
     if (!url || !autoGenerate) {
         preview.style.display = 'none';
@@ -259,14 +288,34 @@ function generateNodeDetails(method, url) {
     return { id, name, method, url };
 }
 
+function generateCommandNodeDetails(command) {
+    const base = (command || 'command').split(/[\\/]/).pop().replace(/\.[^.]+$/, '');
+    const id = ('cmd-' + base).toLowerCase().replace(/[^a-z0-9-]/g, '') || 'cmd';
+    const name = 'Run ' + (command || 'command');
+    return { type: 'command', command: command || '', args: [], id, name };
+}
+
+function toggleNewNodeType(type) {
+    const http = document.getElementById('newNodeHttpGroup');
+    const cmd = document.getElementById('newNodeCommandGroup');
+    const isCmd = type === 'command';
+    if (http) http.style.display = isCmd ? 'none' : '';
+    if (cmd) cmd.style.display = isCmd ? '' : 'none';
+}
+
 function confirmCreateNode() {
     const method = document.getElementById('newNodeMethod').value;
     const url = document.getElementById('newNodeUrl').value.trim();
     const autoGenerate = document.getElementById('autoGenerateNodeDetails').checked;
 
-    // If URL is empty, create a default node (same as skip)
+    const nodeType = document.getElementById('newNodeType')?.value || 'http';
     let nodeDetails = null;
-    if (url) {
+    if (nodeType === 'command') {
+        const command = document.getElementById('newNodeCommand').value.trim();
+        nodeDetails = autoGenerate
+            ? generateCommandNodeDetails(command)
+            : { type: 'command', command, args: [], id: '', name: 'New Command Node' };
+    } else if (url) {
         nodeDetails = autoGenerate
             ? generateNodeDetails(method, url)
             : { method, url, id: '', name: 'New Node' };
@@ -544,10 +593,31 @@ function performStepSwap(index, newIndex) {
 }
 
 function updateStep(index, field, value) {
+    const node = config.nodes[index];
+
+    if (field === 'type') {
+        const newType = value === 'command' ? 'command' : 'http';
+        node.type = newType;
+        if (newType === 'command') {
+            delete node.method; delete node.url; delete node.headers; delete node.body;
+            delete node.skipDefaultHeaders;
+            if (node.command === undefined) node.command = '';
+            if (!Array.isArray(node.args)) node.args = [];
+        } else {
+            delete node.command; delete node.args; delete node.cwd; delete node.env; delete node.statusFrom;
+            if (node.method === undefined) node.method = 'GET';
+            if (node.url === undefined) node.url = '';
+        }
+        saveToLocalStorage();
+        renderSteps();
+        updatePreview();
+        return;
+    }
+
     if (value === undefined || value === '') {
-        delete config.nodes[index][field];
+        delete node[field];
     } else {
-        config.nodes[index][field] = value;
+        node[field] = value;
     }
 
     // Re-render steps if name or id changed (to update header)
@@ -556,6 +626,81 @@ function updateStep(index, field, value) {
     }
 
     saveToLocalStorage();
+    updatePreview();
+}
+
+function addStepArg(index) {
+    const node = config.nodes[index];
+    if (!Array.isArray(node.args)) node.args = [];
+    node.args.push('');
+    saveToLocalStorage();
+    renderSteps();
+    updatePreview();
+}
+
+function updateStepArg(index, argIndex, value) {
+    const node = config.nodes[index];
+    if (!Array.isArray(node.args)) node.args = [];
+    node.args[argIndex] = value;
+    saveToLocalStorage();
+    updatePreview();
+}
+
+function removeStepArg(index, argIndex) {
+    const node = config.nodes[index];
+    if (!Array.isArray(node.args)) return;
+    node.args.splice(argIndex, 1);
+    saveToLocalStorage();
+    renderSteps();
+    updatePreview();
+}
+
+function addStepEnv(index) {
+    const node = config.nodes[index];
+    if (!node.env || typeof node.env !== 'object') node.env = {};
+    // find a unique placeholder key
+    let key = 'NEW_VAR';
+    let n = 1;
+    while (Object.prototype.hasOwnProperty.call(node.env, key)) { key = `NEW_VAR_${n++}`; }
+    node.env[key] = '';
+    saveToLocalStorage();
+    renderSteps();
+    updatePreview();
+}
+
+function updateStepEnvKey(index, oldKey, newKey) {
+    const node = config.nodes[index];
+    if (!node.env || newKey === oldKey) return;
+    if (!newKey) return;
+    if (Object.prototype.hasOwnProperty.call(node.env, newKey)) {
+        if (typeof showAlert === 'function') {
+            showAlert('warning', `Environment variable "${newKey}" already exists. Rename cancelled.`);
+        }
+        renderSteps();
+        return;
+    }
+    const val = node.env[oldKey];
+    delete node.env[oldKey];
+    node.env[newKey] = val;
+    saveToLocalStorage();
+    renderSteps();
+    updatePreview();
+}
+
+function updateStepEnvValue(index, key, value) {
+    const node = config.nodes[index];
+    if (!node.env) node.env = {};
+    node.env[key] = value;
+    saveToLocalStorage();
+    updatePreview();
+}
+
+function removeStepEnv(index, key) {
+    const node = config.nodes[index];
+    if (!node.env) return;
+    delete node.env[key];
+    saveToLocalStorage();
+    renderSteps();
     updatePreview();
 }
 

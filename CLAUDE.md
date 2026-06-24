@@ -191,6 +191,39 @@ npm install
 }
 ```
 
+**Command Nodes (`type: "command"`):**
+
+A node can run a local process instead of an HTTP request by setting `type: "command"`. Its
+output is mapped onto the same response model HTTP nodes use, so validations, conditions, and
+`{{ .responses.* }}` substitution all work identically.
+
+Command node properties (replace the request-shaping HTTP fields `method`/`url`/`headers`/`body`):
+- `type`: `"command"` — selects the command runner (HTTP is the default when omitted)
+- `command`: executable to run (e.g. `node`, `python`, `./script.sh`) — required
+- `args`: array of string arguments passed to the command
+- `cwd`: working directory for the process (defaults to current directory)
+- `env`: object of environment variables for the process (values are masked in logs and the UI)
+- `statusFrom`: JSONPath into the command's parsed JSON stdout used to derive the response status (defaults to `.status`)
+
+`id`, `name`, `timeout`, `conditions`, `validations`, `userPrompts`, and `launchBrowser` work the
+same as for HTTP nodes (`launchBrowser` reads its URL from the command response body). Only
+`method`/`url`/`headers`/`body` are rejected on command nodes.
+
+Command response body shape (validate/chain via JSONPath such as `.exitCode`, `.json.answer`):
+```json
+{ "exitCode": 0, "stdout": "raw stdout", "stderr": "raw stderr", "json": { /* parsed stdout */ } }
+```
+
+Status mapping: `statusFrom` defaults to `.status` — if the parsed stdout JSON has a numeric value
+at that path it becomes the response status; otherwise exit `0` → `200`, non-zero exit → `500`.
+See `examples/config-command-node.json`.
+
+**Command-result UI pattern (Studio):** Command results are rendered with rich panels (exit code,
+stdout, stderr, parsed JSON) via `studio/js/command-result-view.js` — a core helper loaded before
+`ui-renderer-bootstrap.js` and reused by both Flow Runner (`flow-runner.js`) and Try it Out
+(`try-it-out.js`). When adding UI that displays execution results, reuse `formatStepLabel()` and
+`renderCommandResultPanels()` from that module rather than duplicating command-rendering logic.
+
 ### Key Features
 
 **Dynamic Value Substitution:**

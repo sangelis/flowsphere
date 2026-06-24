@@ -249,6 +249,7 @@ See the [`examples/`](examples/) folder for complete, ready-to-run configuration
 | [`config-simple.json`](examples/config-simple.json) | **Start here** — Basic workflow with public JSONPlaceholder API |
 | [`config-oauth-example.json`](examples/config-oauth-example.json) | OAuth authentication flow with browser launch |
 | [`config-test-features.json`](examples/config-test-features.json) | User input prompts and interactive workflows |
+| [`config-command-node.json`](examples/config-command-node.json) | **Command nodes** — run local processes and chain their output |
 | [`config.json`](examples/config.json) | Full-featured example with authentication and validation |
 
 **Test configurations** (in [`tests/`](tests/) folder):
@@ -323,6 +324,81 @@ flowsphere tests/config-test-condition-variables.json
 | `conditions` | | Array of conditional execution rules (AND logic) |
 | `validations` | | Array of validation rules (overrides defaults) |
 | `launchBrowser` | | JSONPath to URL for browser launch |
+
+> The fields above describe HTTP nodes (the default). A node can instead run a local
+> process by setting `"type": "command"` — see [Command Nodes](#command-nodes) below.
+
+### Command Nodes
+
+A node with `"type": "command"` runs a local executable instead of making an HTTP
+request. Its output is mapped onto the same response model used by HTTP nodes, so
+validations, conditions, and `{{ .responses.* }}` substitution all work identically.
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `type` | ✓ | Set to `"command"` to run a process instead of an HTTP request |
+| `command` | ✓ | Executable to run (e.g. `node`, `python`, `./script.sh`) |
+| `args` | | Array of string arguments passed to the command |
+| `cwd` | | Working directory for the process (defaults to the current directory) |
+| `env` | | Object of environment variables for the process (values are masked in logs) |
+| `statusFrom` | | JSONPath into the command's parsed JSON stdout used to derive the response status (defaults to `.status`) |
+
+`id`, `name`, `timeout`, `conditions`, `validations`, `userPrompts`, and `launchBrowser` work
+the same as for HTTP nodes (`launchBrowser` reads its URL from the command's response body,
+e.g. `.json.authUrl`). Only the request-shaping fields `method`, `url`, `headers`, and `body`
+are rejected on command nodes.
+
+**Response model.** A command node produces a response body shaped like:
+
+```json
+{
+  "exitCode": 0,
+  "stdout": "raw stdout text",
+  "stderr": "raw stderr text",
+  "json": { /* stdout parsed as JSON, when possible */ }
+}
+```
+
+Validate or chain any of these via JSONPath, e.g. `.exitCode`, `.stdout`,
+`.json.answer`, `.json.items.[0].id`.
+
+**Status mapping.** The response status is derived as follows:
+- `statusFrom` defaults to `.status`. If the parsed stdout `json` contains a numeric value at
+  that path, that value becomes the response status (a string like `"500"` is coerced to a number).
+- Otherwise — no numeric value at that path — the status is `200` when the process exits `0`,
+  and `500` when it exits non-zero.
+
+Point `statusFrom` at a different field to read the status from elsewhere in the JSON output, or
+at a path that won't match to always use the exit-code mapping.
+
+A status outside the success range fails the node just like a failing HTTP status.
+
+**Passing secrets / headers.** Pass values to the process through `args` or `env`.
+Environment values support variable substitution and are masked (`***`) in execution
+logs and the Studio UI.
+
+**Example:**
+
+```json
+{
+  "id": "run-client",
+  "name": "Run a local client and map its result onto the response model",
+  "type": "command",
+  "command": "node",
+  "args": ["tests/fixtures/mock-client.js", "--status", "200", "--answer", "{{ .vars.answerText }}"],
+  "env": { "EXAMPLE_TOKEN": "{{ .vars.answerText }}-secret" },
+  "statusFrom": ".status",
+  "validations": [
+    { "jsonpath": ".json.answer", "equals": "FlowSphere" },
+    { "jsonpath": ".exitCode", "equals": 0 }
+  ]
+}
+```
+
+A later node can chain the parsed output with
+`{{ .responses.run-client.json.answer }}`. See
+[`examples/config-command-node.json`](examples/config-command-node.json) for a
+complete, runnable workflow.
 
 ### Variable Substitution
 
